@@ -8,7 +8,7 @@ Most of my profiles are created from a combination of copy / pasting from other 
 
 There are 2 methods to get my profiles and keep them up to date;
 
-..* Use GIT or SVN: click the Clone or Download button on the top right of the homepage and copy the repo URL in to your GIT or SVN client of choice.
-..* Download the ZIP using the Clone or Download button on the top right of the homepage and extract the files to somewhere. I would recommend creating a profiles folder in your RebornBuddy folder and placing them there.
+* Use GIT or SVN: click the Clone or Download button on the top right of the homepage and copy the repo URL in to your GIT or SVN client of choice.
+* Download the ZIP using the Clone or Download button on the top right of the homepage and extract the files to somewhere. I would recommend creating a profiles folder in your RebornBuddy folder and placing them there.
 
 I would highly recommend SVN or GIT as you can update with as little as 2 clicks.
