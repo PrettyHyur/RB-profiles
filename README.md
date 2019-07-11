@@ -4,7 +4,7 @@
 #### Most of my profiles utilise the use of **[ExBuddy](https://github.com/Entrax643/ExBuddy)** in some way.
 #### Be sure to have **ExBuddy** installed by placing the *ExBuddy* folder from the repository above in your **plugins** folder where RebornBuddy is installed.
 
-Most of my profiles are created from a combination of copy / pasting from other seasoned professionals (such as **[sodimm](https://github.com/sodimm)** and **[y2krazy](https://github.com/y2krazy)** and learning from mistakes.
+Most of my profiles are created from a combination of copy / pasting from other seasoned professionals (such as **[sodimm](https://github.com/sodimm)** and **[y2krazy](https://github.com/y2krazy)**) and learning from mistakes.
 
 There are 2 methods to get my profiles and keep them up to date;
 
