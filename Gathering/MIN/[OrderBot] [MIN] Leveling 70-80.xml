@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##################################################
+# Profile: [OrderBot] [MIN] Leveling 70 - 80     #
+##################################################
+# Author: iStoleYourWhat?                        #
+##################################################
+# Version: 0.1                                   #
+##################################################
+# Required Level: 70+                            #
+##################################################
+# Required Setup:                                #
+# Fill out the gear set number in the Miner      #
+# codechunk below (line 27).                     #
+##################################################
+-->
+<!-- User Configuration -->
+<!DOCTYPE Profile [
+  <!-- Do you want to discover any unknown items in the Gathering Log? -->
+	<!-- Set this to "False" if you aren't up to date on gathering quests -->
+  <!ENTITY DiscoverUnknowns "True">
+]>
+<Profile>
+	<Name>[OrderBot] [MIN] Leveling 70 - 80 (v0.2)</Name> <!-- with added stealth! -->
+	<KillRadius>90</KillRadius>
+	<CodeChunks>
+		<CodeChunk Name="Miner">
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 19"); ]]>
+		</CodeChunk>
+		<CodeChunk Name="Stealth">
+			<![CDATA[ if(!Core.Player.HasAura(47)) { ff14bot.Managers.ActionManager.DoAction("Stealth",Core.Player); await Coroutine.Wait(5000, () => Core.Player.HasAura(47)); } ]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
+		</CodeChunk>
+		<CodeChunk Name="DisableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = false; ]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = true; ]]>
+		</CodeChunk>		
+	</CodeChunks>
+	<Order>
+
+	<WaitTimer WaitTime="10" />
+    <RunCode Name="Miner" />
+    <WaitTimer WaitTime="1" />
+
+		<If Condition="Core.Me.CurrentJob == ClassJobType.Miner">
+	
+			<LogMessage Message="Don't leave me unattended!" />
+			<If Condition="Core.Player.ClassLevel &lt; 71">
+				<LogMessage Message="Starting the Grind to Level 71." />
+				<TeleportTo Name="Porta Praetoria" AetheryteId="102" />
+				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 71">
+					<GatherObject>Mineral Deposit</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="95" XYZ="-574.9869, 18.23296, -155.1063" />
+						<HotSpot Radius="95" XYZ="-536.9932, 15.21778, -299.1544" />
+						<HotSpot Radius="95" XYZ="-399.3079, 23.87233, -265.761" />
+					</HotSpots>
+					<Slot>3</Slot>
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Unearth III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+			</If>	
+			<If Condition="Core.Player.ClassLevel == 71">
+				<LogMessage Message="Congrats on Level 71!" />
+				<LogMessage Message="Starting the Grind to Level 73." />
+			</If>
+			<While Condition="Core.Player.ClassLevel &lt; 73">
+				<TeleportTo Name="Lydha Lran" AetheryteId="144" />
+				<NoCombatMoveTo Name="Zone 1" XYZ="-822.9684, 24.18817, -108.701"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">				
+				<GatherObject>Mineral Deposit</GatherObject>
+				<HotSpots>
+					<HotSpot Radius="95" XYZ="-813.2965, 23.11762, -87.19056" />
+				</HotSpots>
+				<Slot>0</Slot> <!--Highland Spring Water-->
+				<GatheringSkillOrder>
+					<GatheringSkill SpellName="Unearth III" TimesToCast="1" />
+				</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 2" XYZ="-765.9192, 47.86558, -223.4224"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">				
+				<GatherObject>Mineral Deposit</GatherObject>
+				<HotSpots>
+					<HotSpot Radius="95" XYZ="-726.6625, 39.45369, -236.1767" />
+				</HotSpots>
+				<Slot>0</Slot> <!--Highland Spring Water-->
+				<GatheringSkillOrder>
+					<GatheringSkill SpellName="Unearth III" TimesToCast="1" />
+				</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 3" XYZ="-681.9741, 22.7364,-44.21484"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">				
+				<GatherObject>Mineral Deposit</GatherObject>
+				<HotSpots>
+					<HotSpot Radius="95" XYZ="-673.3029, 23.00133, -43.9804" />
+				</HotSpots>
+				<Slot>0</Slot> <!--Highland Spring Water-->
+				<GatheringSkillOrder>
+					<GatheringSkill SpellName="Unearth III" TimesToCast="1" />
+				</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+			</While>
+			<If Condition="Core.Player.ClassLevel == 73">
+				<LogMessage Message="Congrats on Level 73!" />
+			</If>	
+			<If Condition="Core.Player.ClassLevel &lt; 75">
+				<LogMessage Message="Starting the Grind to Level 75." />
+				<TeleportTo Name="Fort Jobb" AetheryteId="132" />
+				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 75">
+					<GatherObject>Mineral Deposit</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="95" XYZ="224.2676, 18.95998, 794.2184" />
+						<HotSpot Radius="95" XYZ="242.0436, 10.15417, 658.4144" />
+						<HotSpot Radius="95" XYZ="334.8075, 13.118, 797.3335" />
+					</HotSpots>
+					<Slot>5</Slot>
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Unearth III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+			</If>
+			<If Condition="Core.Player.ClassLevel == 76">
+				<LogMessage Message="Congrats on Level 76!" />
+			</If>			
+			<If Condition="Core.Player.ClassLevel &lt; 76">
+				<LogMessage Message="Starting the Grind to Level 76." />
+				<TeleportTo Name="Slitherbough" AetheryteId="142" />
+				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 76">
+					<GatherObject>Rocky Outcrop</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="95" XYZ="-221.8309, 33.33236, -117.6477" />
+						<HotSpot Radius="95" XYZ="-311.4038, 5.079453, 43.08316" />
+						<HotSpot Radius="95" XYZ="-389.1069, 26.39708, -129.9895" />
+					</HotSpots>
+					<Slot>1</Slot>
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Unearth III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+			<If Condition="Core.Player.ClassLevel == 76">
+				<LogMessage Message="Congrats on Level 76!" />
+			</If>				  
+			<If Condition="Core.Player.ClassLevel &lt; 80">
+				<LogMessage Message="Starting the Grind to Level 80." />
+				<TeleportTo Name="Slitherbough" AetheryteId="142" />
+				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 80">
+					<GatherObject>Mineral Deposit</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="95" XYZ="122.7405, -2.637969, 323.2207" />
+						<HotSpot Radius="95" XYZ="306.1823, 24.75313, 340.3305" />
+						<HotSpot Radius="95" XYZ="183.6426, -14.56858, 474.3126" />
+					</HotSpots>
+					<Slot>0</Slot>
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Unearth III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+			</If>		    
+		</If>
+	</If>	
+		<If Condition="Core.Player.ClassLevel == 80">
+			<LogMessage Message="Congrats! You've hit level 80 Miner!" />
+			<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" />
+		</If>
+	</Order>
+</Profile>

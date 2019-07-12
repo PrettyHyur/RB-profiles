@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##################################################
+# Profile: [OrderBot] [BTN] Leveling 70 - 80     #
+##################################################
+# Author: iStoleYourWhat?                        #
+##################################################
+# Version: 0.2                                   #
+##################################################
+# Required Level: 70+                            #
+##################################################
+# Required Setup:                                #
+# Fill out the gear set number in the Botanist   #
+# codechunk below (line 27).                     #
+##################################################
+-->
+<!-- User Configuration -->
+<!DOCTYPE Profile [
+  <!-- Do you want to discover any unknown items in the Gathering Log? -->
+	<!-- Set this to "False" if you aren't up to date on gathering quests -->
+  <!ENTITY DiscoverUnknowns "True">
+]>
+<Profile>
+	<Name>[OrderBor] [BTN] Leveling 70 - 80 (v0.2)</Name> <!-- Yay, grind -->
+	<KillRadius>90</KillRadius>
+	<CodeChunks>
+		<CodeChunk Name="Botanist">
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 20"); ]]>
+		</CodeChunk>
+		<CodeChunk Name="Stealth">
+			<![CDATA[ if(!Core.Player.HasAura(47)) { ff14bot.Managers.ActionManager.DoAction("Stealth",Core.Player); await Coroutine.Wait(5000, () => Core.Player.HasAura(47)); } ]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
+		</CodeChunk>
+		<CodeChunk Name="DisableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = false; ]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = true; ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<Order>
+
+	<WaitTimer WaitTime="10" />
+    <RunCode Name="Botanist" />
+    <WaitTimer WaitTime="1" />
+
+		<If Condition="Core.Me.CurrentJob == ClassJobType.Botanist">
+
+			<LogMessage Message="Don't leave me unattended!" />
+		  	<If Condition="Core.Player.ClassLevel &lt; 71">
+				<LogMessage Message="Starting the Grind to Level 71." />
+				<TeleportTo Name="Porta Praetoria" AetheryteId="102" />
+				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 71">
+					<GatherObject>Mature Tree</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="95" XYZ="359.1889, 23.22657, -513.6865" />
+						<HotSpot Radius="95" XYZ="402.8835, 24.62416, -621.6635" />
+						<HotSpot Radius="95" XYZ="290.0562, 17.74888, -623.6727" />
+					</HotSpots>
+					<Slot>5</Slot>
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+			</If>	
+			<If Condition="Core.Player.ClassLevel &lt; 73">
+				<LogMessage Message="Starting the Grind to Level 73." />
+				<TeleportTo Name="The Ostall Imperative" AetheryteId="136" />
+				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 73">
+					<GatherObject>Lush Vegetation Patch</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="95" XYZ="-409.8083, 3.721667, -28.28305" />
+						<HotSpot Radius="95" XYZ="-426.5502, -0.6516011, 107.2197" />
+						<HotSpot Radius="95" XYZ="-263.0041, -1.592852, 133.1774" />
+					</HotSpots>
+					<Slot>3</Slot>
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+			</If>
+			<If Condition="Core.Player.ClassLevel == 71">
+				<LogMessage Message="Congrats on Level 71!" />
+				<LogMessage Message="Starting the Grind to Level 75." />
+			</If>			
+			<While Condition="Core.Player.ClassLevel &lt; 75">
+				<TeleportTo Name="Slitherbough" AetheryteId="142" />	
+				<NoCombatMoveTo Name="Zone 1" XYZ="-396.2567, 13.73414, 227.9256"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />						
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">		
+					<GatherObject>Lush Vegetation Patch</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="90" XYZ="-418.7421, 9.660616, 260.4372" name="Lush Vegetation Patch" />
+					</HotSpots>
+					<Slot>3</Slot> <!--Pixie Floss Boll-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" />
+					</GatheringSkillOrder>			
+				</ExGather>
+				<RunCode Name="EnableMount" />						
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 2" XYZ="-254.4734, 22.1074, 202.1151"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
+					<GatherObject>Lush Vegetation Patch</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="90" XYZ="-274.8887, 19.79855, 204.3748" name="Lush Vegetation Patch" />
+					</HotSpots>
+					<Slot>3</Slot> <!--Pixie Floss Boll-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" /> <!-- Safe spot-->
+					</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 3" XYZ="-246.6035, 2.579692, 357.5639" />
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
+					<GatherObject>Lush Vegetation Patch</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="120" XYZ="-278.1135, 2.063152, 375.9325" name="Lush Vegetation Patch" />
+					</HotSpots>
+					<Slot>3</Slot> <!--Pixie Floss Boll-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+			</While>
+			<If Condition="Core.Player.ClassLevel == 75">
+				<LogMessage Message="Congrats on Level 75!" />
+				<LogMessage Message="Starting the Grind to Level 76." />
+			</If>
+			<While Condition="Core.Player.ClassLevel &lt; 76">
+				<TeleportTo Name="Slitherbough" AetheryteId="142" />	
+				<NoCombatMoveTo Name="Zone 1" XYZ="-396.2567, 13.73414, 227.9256"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />						
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">		
+					<GatherObject>Lush Vegetation Patch</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="90" XYZ="-418.7421, 9.660616, 260.4372" name="Lush Vegetation Patch" />
+					</HotSpots>
+					<Slot>6</Slot> <!--Creamtop Mushrom-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" />
+					</GatheringSkillOrder>			
+				</ExGather>
+				<RunCode Name="EnableMount" />						
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 2" XYZ="-254.4734, 22.1074, 202.1151"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
+					<GatherObject>Lush Vegetation Patch</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="90" XYZ="-274.8887, 19.79855, 204.3748" name="Lush Vegetation Patch" />
+					</HotSpots>
+					<Slot>6</Slot> <!--Creamtop Mushrom-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" /> <!-- Safe spot-->
+					</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 3" XYZ="-246.6035, 2.579692, 357.5639" />
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
+					<GatherObject>Lush Vegetation Patch</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="120" XYZ="-278.1135, 2.063152, 375.9325" name="Lush Vegetation Patch" />
+					</HotSpots>
+					<Slot>6</Slot>
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+			</While>
+			<If Condition="Core.Player.ClassLevel == 76">
+				<LogMessage Message="Congrats on Level 76!" />
+				<LogMessage Message="Starting the Grind to Level 78." />
+			</If>			
+			<While Condition="Core.Player.ClassLevel &lt; 78">
+				<TeleportTo Name="The Ostall Imperative" AetheryteId="136" />	
+				<NoCombatMoveTo Name="Zone 1" XYZ="-545.6754, 73.8001, -483.2862"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />						
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">		
+					<GatherObject>Mature Tree</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="90" XYZ="-549.0365, 77.36881, -501.8888" name="Mature Tree" />
+					</HotSpots>
+					<Slot>1</Slot> <!--Harcot-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" />
+					</GatheringSkillOrder>			
+				</ExGather>
+				<RunCode Name="EnableMount" />						
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 2" XYZ="-396.7343, 102.9568, -557.971"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
+					<GatherObject>Mature Tree</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="90" XYZ="-390.9851, 104.1269, -541.2751" name="Mature Tree" />
+					</HotSpots>
+					<Slot>1</Slot> <!--Harcot-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" /> <!-- Safe spot-->
+					</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 3" XYZ="-428.127, 102.7038, -643.954" />
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
+					<GatherObject>Mature Tree</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="120" XYZ="-437.5013, 102.3822, -634.5474" name="Mature Tree" />
+					</HotSpots>
+					<Slot>1</Slot> <!--Harcot-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Leaf Turn III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+			</While>
+			<If Condition="Core.Player.ClassLevel == 78">
+				<LogMessage Message="Congrats on Level 78!" />
+				<LogMessage Message="Starting the Grind to Level 80." />
+			</If>	
+			<While Condition="Core.Player.ClassLevel &lt; 80">
+				<TeleportTo Name="The Ostall Imperative" AetheryteId="136" />	
+				<NoCombatMoveTo Name="Zone 1" XYZ="-545.6754, 73.8001, -483.2862"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />						
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">		
+					<GatherObject>Mature Tree</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="90" XYZ="-549.0365, 77.36881, -501.8888" name="Mature Tree" />
+					</HotSpots>
+					<Slot>5</Slot> <!--Lignum Vitae Log-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Field Mastery III" TimesToCast="1" />
+					</GatheringSkillOrder>			
+				</ExGather>
+				<RunCode Name="EnableMount" />						
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 2" XYZ="-396.7343, 102.9568, -557.971"/> <!-- Safe spot-->
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<RunCode Name="Stealth" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="DisableMount" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
+					<GatherObject>Mature Tree</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="90" XYZ="-390.9851, 104.1269, -541.2751" name="Mature Tree" />
+					</HotSpots>
+					<Slot>5</Slot> <!--Lignum Vitae Log-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Field Mastery III" TimesToCast="1" /> <!-- Safe spot-->
+					</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+				<NoCombatMoveTo Name="Zone 3" XYZ="-428.127, 102.7038, -643.954" />
+				<Dismount />
+				<WaitTimer WaitTime="1" />
+				<ExGather Loops="1" DiscoverUnknowns="&DiscoverUnknowns;">
+					<GatherObject>Mature Tree</GatherObject>
+					<HotSpots>
+						<HotSpot Radius="120" XYZ="-437.5013, 102.3822, -634.5474" name="Mature Tree" />
+					</HotSpots>
+					<Slot>5</Slot> <!--Lignum Vitae Log-->
+					<GatheringSkillOrder>
+						<GatheringSkill SpellName="Field Mastery III" TimesToCast="1" />
+					</GatheringSkillOrder>
+				</ExGather>
+				<RunCode Name="EnableMount" />
+				<WaitTimer WaitTime="1" />
+			</While>			
+		</If>
+		<If Condition="Core.Player.ClassLevel == 80">
+			<LogMessage Message="Congrats! You've hit level 80 Botanist!" />
+			<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" />
+		</If>
+	</Order>
+</Profile>
