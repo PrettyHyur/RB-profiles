@@ -1,7 +1,7 @@
 # PrettyHyur RebornBuddy Profiles
 ## These profiles are available to use within RebornBuddy in the OrderBot Botbase.
 
-#### Most of my profiles utilise the use of **[ExBuddy](https://github.com/Entrax643/ExBuddy)** in some way.
+#### Most of my profiles make use of **[ExBuddy](https://github.com/Entrax643/ExBuddy)** in some way.
 #### Be sure to have **ExBuddy** installed by placing the *ExBuddy* folder from the repository above in your **plugins** folder where RebornBuddy is installed.
 
 Most of my profiles are created from a combination of copy / pasting from other seasoned professionals (such as **[sodimm](https://github.com/sodimm)** and **[y2krazy](https://github.com/y2krazy)**) and learning from mistakes.
