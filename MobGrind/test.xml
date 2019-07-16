@@ -1,0 +1,33 @@
+<Profile>
+	<Name>Cubus Flesh Farm</Name>
+	<NoCombatMoveTo name="Cubus Flesh 1" XYZ="-81.52393, -281.2484, 448.8081"/>
+	<KillRadius>90</KillRadius>
+	<GrindAreas>
+		<GrindArea name="Cubus Flesh 1">
+			<HotSpots>
+				<HotSpot Radius="100" XYZ="-81.52393, -281.2484, 448.8081"  name="Cubus Flesh 1" />
+				<HotSpot Radius="100" XYZ="-42.76236, -302.668, 496.1609"  name="Cubus Flesh 2" />
+				<HotSpot Radius="100" XYZ="108.777, -302.668, 541.2347" name="Cubus Flesh 3" />
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Id="8621" />
+			</TargetMobs>
+			<MinLevel>77</MinLevel>
+			<MaxLevel>81</MaxLevel>
+		</GrindArea>
+		<GrindArea name="Cubus Flesh 2">
+			<HotSpots>
+				<HotSpot Radius="100" XYZ="-42.76236, -302.668, 496.1609"  name="Cubus Flesh 2" />
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Id="8621" />
+			</TargetMobs>
+			<MinLevel>77</MinLevel>
+			<MaxLevel>81</MaxLevel>
+		</GrindArea>		
+	</GrindAreas>
+	<Order>
+		<Grind grindRef="Cubus Flesh 1" />
+		<Grind grindRef="Cubus Flesh 2" />
+	</Order>
+</Profile>
