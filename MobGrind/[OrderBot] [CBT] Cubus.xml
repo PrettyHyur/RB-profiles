@@ -17,7 +17,7 @@
 <!DOCTYPE Profile [ <!-- Log Colors --> <!ENTITY LogTxt "#f542c5"> ]>
 <Profile>
 	<Name>Cubus Flesh Grindr! (v0.1)</Name>
-	<KillRadius>90</KillRadius>
+	<KillRadius>50</KillRadius>
 	<CodeChunks>
 		<CodeChunk Name="Dismount">
 			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
@@ -29,14 +29,14 @@
 	<GrindAreas>
 		<GrindArea name="Cubus Flesh Grind Areas">
 			<HotSpots>
-				<HotSpot Radius="100" XYZ="-81.52393, -281.2484, 448.8081"  name="Cubus Flesh 1" />
-				<HotSpot Radius="100" XYZ="-42.76236, -302.668, 496.1609"  name="Cubus Flesh 2" />	
-				<HotSpot Radius="100" XYZ="108.777, -302.668, 541.2347" name="Cubus Flesh 3" />		
-				<HotSpot Radius="100" XYZ="38.70103, -279.4621, 653.1329" name="Cubus Flesh 4" />
-				<HotSpot Radius="100" XYZ="190.9735, -279.4621, 727.861" name="Cubus Flesh 5" />
-				<HotSpot Radius="100" XYZ="261.6169, -279.4621, 785.6997" name="Cubus Flesh 6" />
-				<HotSpot Radius="100" XYZ="119.9164, -263.9172, 785.1696" name="Cubus Flesh 7" />
-				<HotSpot Radius="100" XYZ="34.29309, -263.9172, 754.1708" name="Cubus Flesh 8" />
+				<HotSpot Radius="50" XYZ="-81.52393, -281.2484, 448.8081"  name="Cubus Flesh 1" />
+				<HotSpot Radius="50" XYZ="-42.76236, -302.668, 496.1609"  name="Cubus Flesh 2" />	
+				<HotSpot Radius="50" XYZ="108.777, -302.668, 541.2347" name="Cubus Flesh 3" />		
+				<HotSpot Radius="50" XYZ="38.70103, -279.4621, 653.1329" name="Cubus Flesh 4" />
+				<HotSpot Radius="50" XYZ="190.9735, -279.4621, 727.861" name="Cubus Flesh 5" />
+				<HotSpot Radius="50" XYZ="261.6169, -279.4621, 785.6997" name="Cubus Flesh 6" />
+				<HotSpot Radius="50" XYZ="119.9164, -263.9172, 785.1696" name="Cubus Flesh 7" />
+				<HotSpot Radius="50" XYZ="34.29309, -263.9172, 754.1708" name="Cubus Flesh 8" />
 			</HotSpots>
 			<TargetMobs>
 				<TargetMob Id="8621" />
