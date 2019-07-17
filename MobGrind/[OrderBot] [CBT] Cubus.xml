@@ -8,6 +8,8 @@
 # Version: 0.1                                   #
 ##################################################
 # Required Level: 77+                            #
+# Other Requirements: Both Tempest aetheryte     #
+# unlocked                       				 #
 ##################################################
 # Required Setup:                                #
 # Fill out the gear set number in the Combat     #
@@ -17,7 +19,7 @@
 <!DOCTYPE Profile [ <!-- Log Colors --> <!ENTITY LogTxt "#f542c5"> ]>
 <Profile>
 	<Name>Cubus Flesh Grindr! (v0.1)</Name>
-	<KillRadius>50</KillRadius>
+	<KillRadius>15</KillRadius>
 	<CodeChunks>
 		<CodeChunk Name="Dismount">
 			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
@@ -29,17 +31,20 @@
 	<GrindAreas>
 		<GrindArea name="Cubus Flesh Grind Areas">
 			<HotSpots>
-				<HotSpot Radius="50" XYZ="-81.52393, -281.2484, 448.8081"  name="Cubus Flesh 1" />
-				<HotSpot Radius="50" XYZ="-42.76236, -302.668, 496.1609"  name="Cubus Flesh 2" />	
-				<HotSpot Radius="50" XYZ="108.777, -302.668, 541.2347" name="Cubus Flesh 3" />		
-				<HotSpot Radius="50" XYZ="38.70103, -279.4621, 653.1329" name="Cubus Flesh 4" />
-				<HotSpot Radius="50" XYZ="190.9735, -279.4621, 727.861" name="Cubus Flesh 5" />
-				<HotSpot Radius="50" XYZ="261.6169, -279.4621, 785.6997" name="Cubus Flesh 6" />
-				<HotSpot Radius="50" XYZ="119.9164, -263.9172, 785.1696" name="Cubus Flesh 7" />
-				<HotSpot Radius="50" XYZ="34.29309, -263.9172, 754.1708" name="Cubus Flesh 8" />
+				<HotSpot 	Radius="10" 	XYZ="-79.94236, -281.2484, 439.4068"  	name="Cubus Flesh 1" />
+				<HotSpot 	Radius="10" 	XYZ="35.53586, -302.668, 475.3781"  	name="Cubus Flesh 2" />	
+				<HotSpot 	Radius="10" 	XYZ="49.45591, -302.668, 502.3954" 		name="Cubus Flesh 3" />		
+				<HotSpot 	Radius="10" 	XYZ="104.2465, -302.668, 520.5398" 		name="Cubus Flesh 4" />
+				<HotSpot 	Radius="10" 	XYZ="101.2412, -302.668, 552.5214" 		name="Cubus Flesh 5" />
+				<HotSpot 	Radius="10" 	XYZ="41.1688, -279.4621, 676.5315" 		name="Cubus Flesh 6" />
+				<HotSpot 	Radius="10" 	XYZ="175.8868, -279.4621, 727.6078" 	name="Cubus Flesh 7" />
+				<HotSpot 	Radius="10" 	XYZ="256.9839, -279.4621, 779.0527" 	name="Cubus Flesh 8" />
+				<HotSpot 	Radius="10" 	XYZ="130.3481, -263.9172, 757.1013" 	name="Cubus Flesh 9" />
+				<HotSpot 	Radius="10" 	XYZ="56.64741, -263.9172, 766.28"	 	name="Cubus Flesh 10" />
+				<HotSpot 	Radius="10" 	XYZ="8.187485, -263.9172, 750.5172" 	name="Cubus Flesh 11" />
 			</HotSpots>
 			<TargetMobs>
-				<TargetMob Id="8621" />
+				<TargetMob Name="Cubus" Id="8621" />
 			</TargetMobs>
 			<MinLevel>77</MinLevel>
 			<MaxLevel>81</MaxLevel>
@@ -47,12 +52,12 @@
 	</GrindAreas>
 	<Order>
 		<Log Color="&LogTxt;" Name="Grind" Message="Starting the Cubus Flesh Grind!" />
-		<TeleportTo Name="The Macarenses Angle" AetheryteId="148" />
 		<RunCode Name="Combat" />
-		<Log Color="&LogTxt;" Name="Teleport" Message="Teleporting to The Macarenses Angle." />
+		<WaitTimer WaitTime="2" />
+		<TeleportTo Name="The Macarenses Angle" AetheryteId="148" />
 		<NoCombatMoveTo name="First Grind Spot" XYZ="-81.52393, -281.2484, 448.8081"/>
-		<Dismount />
-		<Grind grindRef="Cubus Flesh Grind Areas" />
+		<RunCode Name="Dismount" />
+		<Grind grindRef="Cubus Flesh Grind Areas" while="IsOnMap(818)" />
 	</Order>
 </Profile>
 
