@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##################################################
+# Profile: [OrderBot] [CBT] Hydrozoan Umbrella	 #
+# Grindr   										 #
+##################################################
+# Author: iStoleYourWhat?                        #
+##################################################
+# Version: 0.1                                   #
+##################################################
+# Required Level: 77+                            #
+# Other Requirements: Tempest aetheryte Unlocked #
+##################################################
+# Required Setup:                                #
+# Fill out the gear set number in the Combat     #
+# codechunk below (line 29).                     #
+##################################################
+-->
+<!DOCTYPE Profile [ <!-- Log Colors --> <!ENTITY LogTxt "#f542c5"> ]>
+<Profile>
+	<Name>Hydrozoan Umbrella Grindr! (v0.1)</Name>
+	<KillRadius>15</KillRadius>
+	<CodeChunks>
+		<CodeChunk Name="Dismount">
+			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
+		</CodeChunk>
+		<CodeChunk Name="Combat">
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 25"); ]]>
+		</CodeChunk>		
+	</CodeChunks>
+	<GrindAreas>
+		<GrindArea name="Hydrozoan Umbrella Grind Areas">
+			<HotSpots>
+				<HotSpot 	Radius="48" 	XYZ="-58.03138 , 415.5164, -630.6886"  		name="Hydrozoan Umbrella 1" />
+				<HotSpot 	Radius="48" 	XYZ="1.039776, 422.8572, -681.0038"  		name="Hydrozoan Umbrella 2" />	
+				<HotSpot 	Radius="48" 	XYZ="0.08418491, 443.6215, -757.3702" 		name="Hydrozoan Umbrella 3" />		
+				<HotSpot 	Radius="48" 	XYZ="-120.6882, 415.9241, -671.963" 		name="Hydrozoan Umbrella 4" />
+				<HotSpot 	Radius="48" 	XYZ="-198.5956, 430.0108, -693.6088" 		name="Hydrozoan Umbrella 5" />
+				<HotSpot 	Radius="48" 	XYZ="-179.37431, 392.6263, -596.9359" 		name="Hydrozoan Umbrella 6" />
+				<HotSpot 	Radius="48" 	XYZ="-122.7097, 392.7714, -529.7673" 		name="Hydrozoan Umbrella 7" />
+				<HotSpot 	Radius="48" 	XYZ="-111.5483, 393.9325, -497.2816" 		name="Hydrozoan Umbrella 8" />
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Name="Hydrozoan" Id="8628" />
+			</TargetMobs>
+			<MinLevel>77</MinLevel>
+			<MaxLevel>81</MaxLevel>
+		</GrindArea>
+	</GrindAreas>
+	<Order>
+		<Log Color="&LogTxt;" Name="Grind" Message="Starting the Hydrozoan Umbrella Grind!" />
+		<RunCode Name="Combat" />
+		<WaitTimer WaitTime="2" />
+		<TeleportTo Name="The Ondo Cups" AetheryteId="147" />
+		<NoCombatMoveTo name="Navigation" XYZ="485.2537, 384.2935, -211.8484"/>
+		<NoCombatMoveTo name="Navigation" XYZ="286.6763, 366.1733, -331.018"/>
+		<NoCombatMoveTo name="Navigation" XYZ="107.1066, 435.8963, -549.6564"/>
+		<NoCombatMoveTo name="Movement Spot" XYZ="-103.0811, 392.9899, -492.8853"/>
+		<RunCode Name="Dismount" />
+		<Grind grindRef="Hydrozoan Umbrella Grind Areas" while="IsOnMap(818)" />
+	</Order>
+</Profile>
+
+				
+				
+				
+				
+				
+				
+				
