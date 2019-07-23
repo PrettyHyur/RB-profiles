@@ -66,6 +66,9 @@
 					<FishSpots>
 						<FishSpot XYZ="527.5667, -241.1993, 448.5228" 	Heading="1.531891" Sit="True" />
 						<FishSpot XYZ="673.6089, -241.035, 490.6089" 	Heading="5.086076" Sit="True" />
+						<FishSpot XYZ="592.302, -236.544, 476.9912"		Heading="2.020275" Sit="True" />
+						<FishSpot XYZ="619.4036, -241.0673, 403.9318"	Heading="5.496966" Sit="True" />
+
 					</FishSpots>
 				</Fish>
 			</While>		
