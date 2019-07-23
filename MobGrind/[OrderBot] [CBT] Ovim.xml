@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##################################################
+# Profile: [OrderBot] [CBT] Ovim Grindr			 #
+##################################################
+# Author: PrettyHyur	                         #
+##################################################
+# Version: 0.1                                   #
+##################################################
+# Required Level: 77+                            #
+# Other Requirements: Twine aetheryte Unlocked 	 #
+##################################################
+# Required Setup:                                #
+# Fill out the gear set number in the Combat     #
+# codechunk below (line 29).                     #
+##################################################
+-->
+<!DOCTYPE Profile [ <!-- Log Colors --> <!ENTITY LogTxt "#f542c5"> ]>
+<Profile>
+	<Name>Ovim Grindr! (v0.1)</Name>
+	<KillRadius>15</KillRadius>
+	<CodeChunks>
+		<CodeChunk Name="Dismount">
+			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
+		</CodeChunk>
+		<CodeChunk Name="Combat">
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 25"); ]]>
+		</CodeChunk>		
+	</CodeChunks>
+	<GrindAreas>
+		<GrindArea name="Ovim Grind Areas">
+			<HotSpots>
+				<HotSpot 	Radius="48" 	XYZ="-346.9258, 4.464724, -362.6718"  		name="Ovim 1" />
+				<HotSpot 	Radius="48" 	XYZ="-348.6026, 4.556465, -367.1428"  		name="Ovim 2" />	
+				<HotSpot 	Radius="48" 	XYZ="-307.7034, 8.966961, -398.4372" 		name="Ovim 3" />		
+				<HotSpot 	Radius="48" 	XYZ="-265.5399, 25.46741, -448.8333" 		name="Ovim 4" />
+				<HotSpot 	Radius="48" 	XYZ="-243.2207, 17.68428, -397.6165" 		name="Ovim 5" />
+				<HotSpot 	Radius="48" 	XYZ="-212.7128, 24.30308, -382.7589" 		name="Ovim 6" />
+				<HotSpot 	Radius="48" 	XYZ="-195.0435, 32.89836, -455.1199" 		name="Ovim 7" />
+				<HotSpot 	Radius="48" 	XYZ="-159.7599, 35.02231, -497.765" 		name="Ovim 8" />
+				<HotSpot 	Radius="48" 	XYZ="-149.7587, 46.80148, -538.2455" 		name="Ovim 9" />
+				<HotSpot 	Radius="48" 	XYZ="-97.89396, 38.29565, -499.0407" 		name="Ovim 10" />
+				<HotSpot 	Radius="48" 	XYZ="-102.7376, 35.05095, -447.061" 		name="Ovim 11" />
+				<HotSpot 	Radius="48" 	XYZ="-34.38685, 42.1549, -437.1074" 		name="Ovim 12" />
+				<HotSpot 	Radius="48" 	XYZ="-74.70687, 35.12276, -402.6638" 		name="Ovim 13" />
+				<HotSpot 	Radius="48" 	XYZ="-124.1216, 30.49164, -376.5578" 		name="Ovim 14" />
+				<HotSpot 	Radius="48" 	XYZ="-74.70687, 35.12276, -402.6638" 		name="Ovim 15" />
+				<HotSpot 	Radius="48" 	XYZ="-74.70687, 35.12276, -402.6638" 		name="Ovim 16" />
+				<HotSpot 	Radius="48" 	XYZ="-74.70687, 35.12276, -402.6638" 		name="Ovim 17" />
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Name="Ovim Nanny" Id="8553" />
+				<TargetMob Name="Ovim Billy" Id="8552" />
+			</TargetMobs>
+			<MinLevel>75</MinLevel>
+			<MaxLevel>81</MaxLevel>
+		</GrindArea>
+	</GrindAreas>
+	<Order>
+		<Log Color="&LogTxt;" Name="Grind" Message="Starting the Ovim Grind!" />
+		<RunCode Name="Combat" />
+		<WaitTimer WaitTime="2" />
+		<TeleportTo Name="Twine" AetheryteId="141" />
+		<NoCombatMoveTo name="Movement Spot" XYZ="-419.1013, 23.10188, -338.224" />
+		<Grind grindRef="Ovim Grind Areas" while="IsOnMap(815)" />
+	</Order>
+</Profile>
+
+				
+				
+				
+				
+				
+				
+				

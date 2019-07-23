@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##################################################
+# Profile: [OrderBot] [FSH] Maneater Clam		 #
+##################################################
+# Author: PrettyHyur	                         #
+##################################################
+# Version: 0.1                                   #
+##################################################
+# Required Level: 79+ FSH                        #
+# Other Requirements: All Zones Unlocked	 	 #
+##################################################
+# Required Setup:                                #
+# Fill out the gear set number in the Fisher     #
+# codechunk below (line 24).                     #
+##################################################
+-->
+<!DOCTYPE Profile [ <!ENTITY LogTxt "#f542c5"> <!ENTITY MinFish "15"> <!ENTITY MaxFish "25"> ]>
+<Profile>
+	<Name>[OrderBot] [FSH] Maneater Clam (v0.1)</Name>
+	<KillRadius>90</KillRadius>
+	<CodeChunks>
+		<CodeChunk Name="Fisher">
+		<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
+		</CodeChunk>
+		<CodeChunk Name="Snagging">
+		<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/ac Snagging"); ]]>
+		</CodeChunk>
+		<CodeChunk Name="Stealth">
+			<![CDATA[ if(!Core.Player.HasAura(47)) { ff14bot.Managers.ActionManager.DoAction("Stealth",Core.Player); await Coroutine.Wait(5000, () => Core.Player.HasAura(47)); } ]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
+		</CodeChunk>
+		<CodeChunk Name="DisableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = false; ]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = true; ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<Order>
+		<WaitTimer WaitTime="5" />	
+		<RunCode Name="Fisher" />
+		<WaitTimer WaitTime="2" />
+		<RunCode Name="Snagging" />
+		<WaitTimer WaitTime="2" />
+
+		<If Condition="Core.Me.CurrentJob == ClassJobType.Fisher">
+		
+		  <Log Color="&LogTxt;" Message="Don't leave me unattended!" />
+		  	<!--<If Condition="not HasAtLeast(27588,1)">
+				<Log Color="&LogTxt;" Message="Buy some Short Bill Minnow!" />
+				<TeleportTo Name="Eulmore" AetheryteId="134" />
+				<NoCombatMoveTo Name="Scrip Exchange" XYZ="15.60643, 82.05, -20.294" />
+				<BuyItem ItemId="27588" ItemCount="3" DialogOption="1,6" InteractDistance="3.0" NpcId="1027541" XYZ="17.62415, 82.05, -22.2019"/>
+				<Log Color="&LogTxt;" Message="Buy some Short Bill Minnow!" />
+			</If>-->
+			<While Condition="HasAtLeast(27588,3)">
+				<Log Color="&LogTxt;" Message="Going to fish some clams!" />
+				<TeleportTo Name="Macarenses Angle" AetheryteId="148" />
+				<NoCombatMoveTo Name="Movement Zone 1" XYZ="-37.65775, -233.2697, 508.4364" />
+				<NoCombatMoveTo Name="Movement Zone 2" XYZ="423.6716, -231.0157, 404.8511" />
+				<NoCombatMoveTo Name="Movement Zone 3" XYZ="453.6776, -227.3906, 443.0744" />
+				<Fish Snagging="true" Mooch="1" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
+					<FishSpots>
+						<FishSpot XYZ="527.5667, -241.1993, 448.5228" 	Heading="1.531891" Sit="True" />
+						<FishSpot XYZ="673.6089, -241.035, 490.6089" 	Heading="5.086076" Sit="True" />
+					</FishSpots>
+				</Fish>
+			</While>		
+		</If>	
+	</Order>
+</Profile>		

@@ -3,7 +3,7 @@
 ##################################################
 # Profile: [OrderBot] [BTN] Leveling 70 - 80     #
 ##################################################
-# Author: iStoleYourWhat?                        #
+# Author: PrettyHyur	                         #
 ##################################################
 # Version: 0.2                                   #
 ##################################################
@@ -21,7 +21,7 @@
   <!ENTITY DiscoverUnknowns "True">
 ]>
 <Profile>
-	<Name>[OrderBor] [BTN] Leveling 70 - 80 (v0.2)</Name> <!-- Yay, grind -->
+	<Name>[OrderBot] [BTN] Leveling 70 - 80 (v0.2)</Name> <!-- Yay, grind -->
 	<KillRadius>90</KillRadius>
 	<CodeChunks>
 		<CodeChunk Name="Botanist">
@@ -41,16 +41,15 @@
 		</CodeChunk>
 	</CodeChunks>
 	<Order>
-
-	<WaitTimer WaitTime="10" />
-    <RunCode Name="Botanist" />
-    <WaitTimer WaitTime="1" />
+		<WaitTimer WaitTime="10" />
+		<RunCode Name="Botanist" />
+		<WaitTimer WaitTime="1" />
 
 		<If Condition="Core.Me.CurrentJob == ClassJobType.Botanist">
 
-			<LogMessage Message="Don't leave me unattended!" />
+			<Log Color="&LogTxt;" Message="Don't leave me unattended!" />
 		  	<If Condition="Core.Player.ClassLevel &lt; 71">
-				<LogMessage Message="Starting the Grind to Level 71." />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 71." />
 				<TeleportTo Name="Porta Praetoria" AetheryteId="102" />
 				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 71">
 					<GatherObject>Mature Tree</GatherObject>
@@ -66,7 +65,7 @@
 				</ExGather>
 			</If>	
 			<If Condition="Core.Player.ClassLevel &lt; 73">
-				<LogMessage Message="Starting the Grind to Level 73." />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 73." />
 				<TeleportTo Name="The Ostall Imperative" AetheryteId="136" />
 				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 73">
 					<GatherObject>Lush Vegetation Patch</GatherObject>
@@ -82,8 +81,8 @@
 				</ExGather>
 			</If>
 			<If Condition="Core.Player.ClassLevel == 71">
-				<LogMessage Message="Congrats on Level 71!" />
-				<LogMessage Message="Starting the Grind to Level 75." />
+				<Log Color="&LogTxt;" Message="Congrats on Level 71!" />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 75." />
 			</If>			
 			<While Condition="Core.Player.ClassLevel &lt; 75">
 				<TeleportTo Name="Slitherbough" AetheryteId="142" />	
@@ -143,8 +142,8 @@
 				<WaitTimer WaitTime="1" />
 			</While>
 			<If Condition="Core.Player.ClassLevel == 75">
-				<LogMessage Message="Congrats on Level 75!" />
-				<LogMessage Message="Starting the Grind to Level 76." />
+				<Log Color="&LogTxt;" Message="Congrats on Level 75!" />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 76." />
 			</If>
 			<While Condition="Core.Player.ClassLevel &lt; 76">
 				<TeleportTo Name="Slitherbough" AetheryteId="142" />	
@@ -204,8 +203,8 @@
 				<WaitTimer WaitTime="1" />
 			</While>
 			<If Condition="Core.Player.ClassLevel == 76">
-				<LogMessage Message="Congrats on Level 76!" />
-				<LogMessage Message="Starting the Grind to Level 78." />
+				<Log Color="&LogTxt;" Message="Congrats on Level 76!" />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 78." />
 			</If>			
 			<While Condition="Core.Player.ClassLevel &lt; 78">
 				<TeleportTo Name="The Ostall Imperative" AetheryteId="136" />	
@@ -262,8 +261,8 @@
 				<WaitTimer WaitTime="1" />
 			</While>
 			<If Condition="Core.Player.ClassLevel == 78">
-				<LogMessage Message="Congrats on Level 78!" />
-				<LogMessage Message="Starting the Grind to Level 80." />
+				<Log Color="&LogTxt;" Message="Congrats on Level 78!" />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 80." />
 			</If>	
 			<While Condition="Core.Player.ClassLevel &lt; 80">
 				<TeleportTo Name="The Ostall Imperative" AetheryteId="136" />	
@@ -321,7 +320,7 @@
 			</While>			
 		</If>
 		<If Condition="Core.Player.ClassLevel == 80">
-			<LogMessage Message="Congrats! You've hit level 80 Botanist!" />
+			<Log Color="&LogTxt;" Message="Congrats! You've hit level 80 Botanist!" />
 			<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" />
 		</If>
 	</Order>

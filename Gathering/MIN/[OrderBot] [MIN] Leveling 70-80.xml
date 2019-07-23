@@ -3,7 +3,7 @@
 ##################################################
 # Profile: [OrderBot] [MIN] Leveling 70 - 80     #
 ##################################################
-# Author: iStoleYourWhat?                        #
+# Author: PrettyHyur	                         #
 ##################################################
 # Version: 0.1                                   #
 ##################################################
@@ -41,16 +41,15 @@
 		</CodeChunk>		
 	</CodeChunks>
 	<Order>
-
-	<WaitTimer WaitTime="10" />
-    <RunCode Name="Miner" />
-    <WaitTimer WaitTime="1" />
+		<WaitTimer WaitTime="10" />
+		<RunCode Name="Miner" />
+		<WaitTimer WaitTime="1" />
 
 		<If Condition="Core.Me.CurrentJob == ClassJobType.Miner">
 	
-			<LogMessage Message="Don't leave me unattended!" />
+			<Log Color="&LogTxt;" Message="Don't leave me unattended!" />
 			<If Condition="Core.Player.ClassLevel &lt; 71">
-				<LogMessage Message="Starting the Grind to Level 71." />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 71." />
 				<TeleportTo Name="Porta Praetoria" AetheryteId="102" />
 				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 71">
 					<GatherObject>Mineral Deposit</GatherObject>
@@ -66,8 +65,8 @@
 				</ExGather>
 			</If>	
 			<If Condition="Core.Player.ClassLevel == 71">
-				<LogMessage Message="Congrats on Level 71!" />
-				<LogMessage Message="Starting the Grind to Level 73." />
+				<Log Color="&LogTxt;" Message="Congrats on Level 71!" />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 73." />
 			</If>
 			<While Condition="Core.Player.ClassLevel &lt; 73">
 				<TeleportTo Name="Lydha Lran" AetheryteId="144" />
@@ -127,10 +126,10 @@
 				<WaitTimer WaitTime="1" />
 			</While>
 			<If Condition="Core.Player.ClassLevel == 73">
-				<LogMessage Message="Congrats on Level 73!" />
+				<Log Color="&LogTxt;" Message="Congrats on Level 73!" />
 			</If>	
 			<If Condition="Core.Player.ClassLevel &lt; 75">
-				<LogMessage Message="Starting the Grind to Level 75." />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 75." />
 				<TeleportTo Name="Fort Jobb" AetheryteId="132" />
 				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 75">
 					<GatherObject>Mineral Deposit</GatherObject>
@@ -146,10 +145,10 @@
 				</ExGather>
 			</If>
 			<If Condition="Core.Player.ClassLevel == 76">
-				<LogMessage Message="Congrats on Level 76!" />
+				<Log Color="&LogTxt;" Message="Congrats on Level 76!" />
 			</If>			
 			<If Condition="Core.Player.ClassLevel &lt; 76">
-				<LogMessage Message="Starting the Grind to Level 76." />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 76." />
 				<TeleportTo Name="Slitherbough" AetheryteId="142" />
 				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 76">
 					<GatherObject>Rocky Outcrop</GatherObject>
@@ -164,10 +163,10 @@
 					</GatheringSkillOrder>
 				</ExGather>
 			<If Condition="Core.Player.ClassLevel == 76">
-				<LogMessage Message="Congrats on Level 76!" />
+				<Log Color="&LogTxt;" Message="Congrats on Level 76!" />
 			</If>				  
 			<If Condition="Core.Player.ClassLevel &lt; 80">
-				<LogMessage Message="Starting the Grind to Level 80." />
+				<Log Color="&LogTxt;" Message="Starting the Grind to Level 80." />
 				<TeleportTo Name="Slitherbough" AetheryteId="142" />
 				<ExGather DiscoverUnknowns="&DiscoverUnknowns;" while="Core.Player.ClassLevel &lt; 80">
 					<GatherObject>Mineral Deposit</GatherObject>
@@ -185,7 +184,7 @@
 		</If>
 	</If>	
 		<If Condition="Core.Player.ClassLevel == 80">
-			<LogMessage Message="Congrats! You've hit level 80 Miner!" />
+			<Log Color="&LogTxt;" Message="Congrats! You've hit level 80 Miner!" />
 			<GetTo ZoneId="129" XYZ="-84.08636, 18.60033, -12.41393" />
 		</If>
 	</Order>
