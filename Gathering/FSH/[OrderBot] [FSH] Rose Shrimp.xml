@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##################################################
+# Profile: [OrderBot] [FSH] Rose Shrimp			 #
+##################################################
+# Author: PrettyHyur	                         #
+##################################################
+# Version: 0.1                                   #
+##################################################
+# Required Level: 72+ FSH                        #
+# Other Requirements: Kholusia Unlocked		 	 #
+# Buy some Short Bill Minnow				 	 #
+##################################################
+# Required Setup:                                #
+# Fill out the gear set number in the Fisher     #
+# codechunk below (line 24).                     #
+##################################################
+-->
+<!DOCTYPE Profile [ <!ENTITY LogTxt "#f542c5"> <!ENTITY MinFish "15"> <!ENTITY MaxFish "25"> ]>
+<Profile>
+	<Name>[OrderBot] [FSH] Rose Shrimp (v0.1)</Name>
+	<KillRadius>90</KillRadius>
+	<CodeChunks>
+		<CodeChunk Name="Fisher">
+		<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
+		</CodeChunk>
+		<CodeChunk Name="Stealth">
+			<![CDATA[ if(!Core.Player.HasAura(47)) { ff14bot.Managers.ActionManager.DoAction("Stealth",Core.Player); await Coroutine.Wait(5000, () => Core.Player.HasAura(47)); } ]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
+		</CodeChunk>
+		<CodeChunk Name="DisableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = false; ]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = true; ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<Order>
+		<WaitTimer WaitTime="5" />	
+		<RunCode Name="Fisher" />
+		<WaitTimer WaitTime="2" />
+		<While Condition="not HasAtLeast(27588,3)">
+			<Log Color="&LogTxt;" Message="Buy some Short Bill Minnow from Eulmore!" />
+		</While>
+		<While Condition="Core.Me.CurrentJob == ClassJobType.Fisher">
+			<Log Color="&LogTxt;" Message="Don't leave me unattended!" />
+			<While Condition="IsTimeBetween(0,1) and not HasAtLeast(27582,100)">
+				<Log Color="&LogTxt;" Message="Buying Fruit Worm" />
+				<TeleportTo Name="Wright" AetheryteId="138" />
+				<NoCombatMoveTo Name="Local Merchant" XYZ="-309.7429, 20.96825, 366.9031" />
+				<BuyItem ItemId="27582" ItemCount="99" DialogOption="6" InteractDistance="3.0" NpcId="1027429" XYZ="-307.5529, 20.97029, 367.7966"/>
+			</While>
+		  	<While Condition="IsTimeBetween(2,24) and HasAtLeast(27588,3)">
+				<Log Color="&LogTxt;" Message="Going to fish some Rose Shrimp!" />
+				<TeleportTo Name="Wright" AetheryteId="138" />
+				<Fish Condition="IsTimeBetween(2,24) Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
+					<FishSpots>
+						<FishSpot XYZ="-786.8018, -0.5988511, 512.4433" Heading="4.844145" Sit="True" />
+						<FishSpot XYZ="-657.3771, -0.5989766, 685.7817" Heading="1.85985" Sit="True" />
+						<FishSpot XYZ="-676.0908, -0.6085914, 607.7499" Heading="1.258837" Sit="True" />
+						<FishSpot XYZ="-596.753, 0.2128593, 567.9592" Heading="5.887372" Sit="True" />
+					</FishSpots>
+				</Fish>
+			</While>
+			<While Condition="IsTimeBetween(1,2) and HasAtLeast(27582,5)">
+				<Log Color="&LogTxt;" Message="Resetting fish!" />
+				<TeleportTo Name="Wright" AetheryteId="138" />
+				<Fish Condition="IsTimeBetween(1,2) Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="1" MaxFish="5">
+					<FishSpots>
+						<FishSpot XYZ="431.4356, 36.41109, 75.50977" Heading="4.78" Sit="True" />
+					</FishSpots>
+				</Fish>
+			</While>
+		</While>
+	</Order>
+</Profile>
+				
