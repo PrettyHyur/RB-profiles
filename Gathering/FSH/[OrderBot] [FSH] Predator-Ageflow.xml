@@ -50,7 +50,7 @@
 		</While>
 		<While Condition="Core.Me.CurrentJob == ClassJobType.Fisher">
 			<Log Color="&LogTxt;" Message="Don't leave me unattended!" />
-		  	<While Condition="IsTimeBetween(2,24) and HasAtLeast(27588,3)">
+		  	<While Condition="IsTimeBetween(2,0) and HasAtLeast(27588,3)">
 				<Log Color="&LogTxt;" Message="Going to fish some Predator!" />
 				<TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
 				<ExPurify>
@@ -65,7 +65,7 @@
 				<RunCode Name="Dismount" />
 				<RunCode Name="DisableMount" />
 				<RunCode Name="Stealth" />
-				<ExFish Condition="IsTimeBetween(2,24)" Stealth="True" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
+				<ExFish Condition="IsTimeBetween(2,0)" Stealth="True" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
 					<Keepers>
 						<Keeper Name="Predator"/>
 						<Keeper Name="Sweetflesh Oyster"/>
@@ -82,7 +82,7 @@
 				</ExFish>
 				<RunCode Name="EnableMount" />
 			</While>
-			<While Condition="IsTimeBetween(24,2) and HasAtLeast(27588,3)">
+			<While Condition="IsTimeBetween(0,2) and HasAtLeast(27588,3)">
 				<Log Color="&LogTxt;" Message="Going to reset fish!" />
 				<TeleportTo Name="Macarenses Angle" AetheryteId="148" Force="True" />
 				<NoCombatMoveTo Name="Movement Zone 1" XYZ="-37.65775, -233.2697, 508.4364" />
