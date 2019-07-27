@@ -62,7 +62,7 @@
 				<NoCombatMoveTo Name="Movement Zone 6" XYZ="298.8772, 239.3816, -348.4162" />
 				<WaitTimer WaitTime="2" />
 				<RunCode Name="Dismount" />
-				<RunCode Name="Disable Mount" />
+				<RunCode Name="DisableMount" />
 				<RunCode Name="Stealth" />
 				<ExFish Condition="IsTimeBetween(2,24)" Stealth="True" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600">
 					<Keepers>
@@ -79,7 +79,7 @@
 						<FishSpot XYZ="350.9953, 231.6881, -272.9398" Heading="2.368804" Sit="True" />
 					</FishSpots>
 				</ExFish>
-				<RunCode Name="Enable Mount" />
+				<RunCode Name="EnableMount" />
 			</While>
 			<While Condition="IsTimeBetween(24,2) and HasAtLeast(27588,3)">
 				<Log Color="&LogTxt;" Message="Resetting Zone" />
