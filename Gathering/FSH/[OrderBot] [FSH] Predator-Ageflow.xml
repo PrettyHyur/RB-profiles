@@ -22,16 +22,19 @@
 	<KillRadius>90</KillRadius>
 	<CodeChunks>
 		<CodeChunk Name="Fisher">
-		<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
 		</CodeChunk>
 		<CodeChunk Name="Stealth">
-			<![CDATA[ SpellData data; if (!Core.Me.HasAura(47) && ActionManager.CurrentActions.TryGetValue(298, out data) && ActionManager.CanCast(data, Core.Me)) ActionManager.DoAction(298, Core.Me); ]]>
+						<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/ac Stealth"); ]]>
 		</CodeChunk>
 		<CodeChunk Name="Dismount">
 			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
 		</CodeChunk>
 		<CodeChunk Name="DisableMount">
 			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = false; ]]>
+		</CodeChunk>
+		<CodeChunk Name="MountDistance">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.MountDistance = 10; ]]>
 		</CodeChunk>
 		<CodeChunk Name="EnableMount">
 			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = true; ]]>
@@ -41,16 +44,15 @@
 		<WaitTimer WaitTime="5" />	
 		<RunCode Name="Fisher" />
 		<WaitTimer WaitTime="2" />
+		<RunCode Name="MountDistance" />
 		<While Condition="not HasAtLeast(27588,3)">
 			<Log Color="&LogTxt;" Message="Buy some Short Bill Minnow from Eulmore!" />
 		</While>
 		<While Condition="Core.Me.CurrentJob == ClassJobType.Fisher">
 			<Log Color="&LogTxt;" Message="Don't leave me unattended!" />
 		  	<While Condition="IsTimeBetween(2,24) and HasAtLeast(27588,3)">
-				<Log Color="&LogTxt;" Message="Resetting Zone" />
-				<TeleportTo Name="Twine" AetheryteId="141" />
 				<Log Color="&LogTxt;" Message="Going to fish some Predator!" />
-				<TeleportTo Name="The Ondo Cups" AetheryteId="147" />
+				<TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
 				<ExPurify>
 					<Item>Predator</Item>
 				</ExPurify>
@@ -59,12 +61,11 @@
 				<NoCombatMoveTo Name="Movement Zone 3" XYZ="484.743, 323.0126, -299.9759" />
 				<NoCombatMoveTo Name="Movement Zone 4" XYZ="389.4394, 312.9135, -273.9686" />
 				<NoCombatMoveTo Name="Movement Zone 5" XYZ="316.8263, 277.7139, -307.4475" />
-				<NoCombatMoveTo Name="Movement Zone 6" XYZ="298.8772, 239.3816, -348.4162" />
 				<WaitTimer WaitTime="2" />
 				<RunCode Name="Dismount" />
 				<RunCode Name="DisableMount" />
 				<RunCode Name="Stealth" />
-				<ExFish Condition="IsTimeBetween(2,24)" Stealth="True" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600">
+				<ExFish Condition="IsTimeBetween(2,24)" Stealth="True" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
 					<Keepers>
 						<Keeper Name="Predator"/>
 						<Keeper Name="Sweetflesh Oyster"/>
@@ -74,18 +75,16 @@
 						<PatienceTug Mooch="0" TugType="Light"/>
 					</PatienceTugs>
 					<FishSpots>
-						<FishSpot XYZ="330.4016, 231.6881, -331.9807" Heading="0.9697537" Sit="True" />
-						<FishSpot XYZ="383.4693, 231.6881, -331.4854" Heading="3.772046" Sit="True" />
-						<FishSpot XYZ="350.9953, 231.6881, -272.9398" Heading="2.368804" Sit="True" />
+						<FishSpot XYZ="377.0307, 231.6881, -336.7995" Heading="1.592814" Sit="True" />
+						<FishSpot XYZ="289.1884, 265.6378, -335.5" Heading="0.4555542" Sit="True" />
+						<FishSpot XYZ="290.0694, 248.7851, -285.784" Heading="2.612786" Sit="True" />
 					</FishSpots>
 				</ExFish>
 				<RunCode Name="EnableMount" />
 			</While>
 			<While Condition="IsTimeBetween(24,2) and HasAtLeast(27588,3)">
-				<Log Color="&LogTxt;" Message="Resetting Zone" />
-				<TeleportTo Name="Twine" AetheryteId="141" />
 				<Log Color="&LogTxt;" Message="Going to reset fish!" />
-				<TeleportTo Name="Macarenses Angle" AetheryteId="148" />
+				<TeleportTo Name="Macarenses Angle" AetheryteId="148" Force="True" />
 				<NoCombatMoveTo Name="Movement Zone 1" XYZ="-37.65775, -233.2697, 508.4364" />
 				<NoCombatMoveTo Name="Movement Zone 2" XYZ="423.6716, -231.0157, 404.8511" />
 				<NoCombatMoveTo Name="Movement Zone 3" XYZ="453.6776, -227.3906, 443.0744" />

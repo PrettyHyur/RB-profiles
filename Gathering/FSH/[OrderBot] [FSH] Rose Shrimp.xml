@@ -22,10 +22,10 @@
 	<KillRadius>90</KillRadius>
 	<CodeChunks>
 		<CodeChunk Name="Fisher">
-		<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
 		</CodeChunk>
 		<CodeChunk Name="Stealth">
-			<![CDATA[ SpellData data; if (!Core.Me.HasAura(47) && ActionManager.CurrentActions.TryGetValue(298, out data) && ActionManager.CanCast(data, Core.Me)) ActionManager.DoAction(298, Core.Me); ]]>
+						<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/ac Stealth"); ]]>
 		</CodeChunk>
 		<CodeChunk Name="Dismount">
 			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
@@ -66,7 +66,7 @@
 			</While>
 			<While Condition="IsTimeBetween(1,2) and HasAtLeast(27582,5)">
 				<Log Color="&LogTxt;" Message="Resetting fish!" />
-				<TeleportTo Name="Wright" AetheryteId="138" />
+				<TeleportTo Name="Wright" AetheryteId="138" Force="True" />
 				<Fish Condition="IsTimeBetween(1,2) Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="1" MaxFish="5">
 					<FishSpots>
 						<FishSpot XYZ="431.4356, 36.41109, 75.50977" Heading="4.78" Sit="True" />
