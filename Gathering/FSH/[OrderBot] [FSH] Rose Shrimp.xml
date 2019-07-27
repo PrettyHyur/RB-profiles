@@ -25,7 +25,7 @@
 		<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
 		</CodeChunk>
 		<CodeChunk Name="Stealth">
-			<![CDATA[ if(!Core.Player.HasAura(47)) { ff14bot.Managers.ActionManager.DoAction("Stealth",Core.Player); await Coroutine.Wait(5000, () => Core.Player.HasAura(47)); } ]]>
+			<![CDATA[ SpellData data; if (!Core.Me.HasAura(47) && ActionManager.CurrentActions.TryGetValue(298, out data) && ActionManager.CanCast(data, Core.Me)) ActionManager.DoAction(298, Core.Me); ]]>
 		</CodeChunk>
 		<CodeChunk Name="Dismount">
 			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
