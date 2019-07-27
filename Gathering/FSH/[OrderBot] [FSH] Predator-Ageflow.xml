@@ -75,9 +75,9 @@
 						<PatienceTug Mooch="0" TugType="Light"/>
 					</PatienceTugs>
 					<FishSpots>
-						<FishSpot XYZ="377.0307, 231.6881, -336.7995" Heading="1.592814" Sit="True" />
-						<FishSpot XYZ="289.1884, 265.6378, -335.5" Heading="0.4555542" Sit="True" />
-						<FishSpot XYZ="290.0694, 248.7851, -285.784" Heading="2.612786" Sit="True" />
+						<FishSpot XYZ="377.0307, 231.6881, -336.7995" 	Heading="1.592814" Sit="True" />
+						<FishSpot XYZ="287.8583, 266.5775, -337.0536" 	Heading="0.3792405" Sit="True" />
+						<FishSpot XYZ="289.6286, 248.993, -285.0649" 	Heading="2.758233" Sit="True" />
 					</FishSpots>
 				</ExFish>
 				<RunCode Name="EnableMount" />
@@ -88,14 +88,14 @@
 				<NoCombatMoveTo Name="Movement Zone 1" XYZ="-37.65775, -233.2697, 508.4364" />
 				<NoCombatMoveTo Name="Movement Zone 2" XYZ="423.6716, -231.0157, 404.8511" />
 				<NoCombatMoveTo Name="Movement Zone 3" XYZ="453.6776, -227.3906, 443.0744" />
-				<Fish Snagging="true" Mooch="1" Bait="Short Bill Minnow" MinFish="1" MaxFish="&MaxFish;" ShuffleFishSpots="True">
+				<ExFish Condition="IsTimeBetween(0,2)" Snagging="true" Mooch="1" Bait="Short Bill Minnow" MinFish="1" MaxFish="5" ShuffleFishSpots="True">
 					<FishSpots>
 						<FishSpot XYZ="527.5667, -241.1993, 448.5228" 	Heading="1.531891" Sit="True" />
 						<FishSpot XYZ="673.6089, -241.035, 490.6089" 	Heading="5.086076" Sit="True" />
 						<FishSpot XYZ="592.302, -236.544, 476.9912"		Heading="2.020275" Sit="True" />
 						<FishSpot XYZ="619.4036, -241.0673, 403.9318"	Heading="5.496966" Sit="True" />
 					</FishSpots>
-				</Fish>
+				</ExFish>
 			</While>
 		</While>
 	</Order>
