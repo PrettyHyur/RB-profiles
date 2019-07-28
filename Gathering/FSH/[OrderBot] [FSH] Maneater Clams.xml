@@ -80,7 +80,7 @@
 				<RunCode Name="Dismount" />
 				<RunCode Name="DisableMount" />
 				<RunCode Name="Stealth" />
-				<ExFish Condition="IsTimeBetween(1,3)" Stealth="True" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="1" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
+				<ExFish Condition="IsTimeBetween(1,3)" Stealth="True" Collect="True" FishEyes="False" Snagging="False" CordialType="Auto" MinFish="1" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
 					<Keepers>
 						<Keeper Name="Predator"/>
 						<Keeper Name="Sweetflesh Oyster"/>
@@ -91,7 +91,7 @@
 					</PatienceTugs>
 					<FishSpots>
 						<FishSpot XYZ="377.0307, 231.6881, -336.7995" 	Heading="1.592814" Sit="True" />
-						<FishSpot XYZ="338.8705, 282.2104, -351.5596" 	Heading="5.903006" Sit="True" />
+						<FishSpot XYZ="328.5191, 231.6881, -316.6299" Heading="2.035542" Sit="True" />
 						<FishSpot XYZ="283.1848, 232.7045, -300.3194" Heading="1.727854" Sit="True" />
 					</FishSpots>
 				</ExFish>
