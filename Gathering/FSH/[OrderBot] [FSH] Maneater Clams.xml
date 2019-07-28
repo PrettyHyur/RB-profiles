@@ -91,8 +91,8 @@
 					</PatienceTugs>
 					<FishSpots>
 						<FishSpot XYZ="377.0307, 231.6881, -336.7995" 	Heading="1.592814" Sit="True" />
-						<FishSpot XYZ="328.5191, 231.6881, -316.6299" Heading="2.035542" Sit="True" />
-						<FishSpot XYZ="283.1848, 232.7045, -300.3194" Heading="1.727854" Sit="True" />
+						<FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
+						<FishSpot XYZ="343.5728, 294.1012, -310.1732" Heading="4.875957" Sit="True" />
 					</FishSpots>
 				</ExFish>
 				<RunCode Name="EnableMount" />
