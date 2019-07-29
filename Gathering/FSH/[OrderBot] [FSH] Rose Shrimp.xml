@@ -55,23 +55,23 @@
 		  	<While Condition="IsTimeBetween(2,24) and HasAtLeast(27588,3)">
 				<Log Color="&LogTxt;" Message="Going to fish some Rose Shrimp!" />
 				<TeleportTo Name="Wright" AetheryteId="138" />
-				<Fish Condition="IsTimeBetween(2,24) Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
+				<ExFish Condition="IsTimeBetween(2,24)" Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
 					<FishSpots>
 						<FishSpot XYZ="-786.8018, -0.5988511, 512.4433" Heading="4.844145" Sit="True" />
 						<FishSpot XYZ="-657.3771, -0.5989766, 685.7817" Heading="1.85985" Sit="True" />
 						<FishSpot XYZ="-676.0908, -0.6085914, 607.7499" Heading="1.258837" Sit="True" />
 						<FishSpot XYZ="-596.753, 0.2128593, 567.9592" Heading="5.887372" Sit="True" />
 					</FishSpots>
-				</Fish>
+				</ExFish>
 			</While>
 			<While Condition="IsTimeBetween(1,2) and HasAtLeast(27582,5)">
 				<Log Color="&LogTxt;" Message="Resetting fish!" />
 				<TeleportTo Name="Wright" AetheryteId="138" Force="True" />
-				<Fish Condition="IsTimeBetween(1,2) Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="1" MaxFish="5">
+				<ExFish Condition="IsTimeBetween(1,2)" Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="1" MaxFish="5">
 					<FishSpots>
 						<FishSpot XYZ="431.4356, 36.41109, 75.50977" Heading="4.78" Sit="True" />
 					</FishSpots>
-				</Fish>
+				</ExFish>
 			</While>
 		</While>
 	</Order>
