@@ -18,8 +18,7 @@
 <!DOCTYPE Profile [
   <!-- Do you want to discover any unknown items in the Gathering Log? -->
 	<!-- Set this to "False" if you aren't up to date on gathering quests -->
-  <!ENTITY DiscoverUnknowns "True">
-]>
+  <!ENTITY DiscoverUnknowns "True"> <!ENTITY LogTxt "#f542c5"> ]>
 <Profile>
 	<Name>[OrderBot] [BTN] Leveling 70 - 80 (v0.2)</Name> <!-- Yay, grind -->
 	<KillRadius>90</KillRadius>
