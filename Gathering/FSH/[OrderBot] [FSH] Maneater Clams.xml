@@ -50,7 +50,7 @@
 		</While>
 		<While Condition="Core.Me.CurrentJob == ClassJobType.Fisher">
 		  <Log Color="&LogTxt;" Message="Don't leave me unattended!" />
-			<While Condition="IsTimeBetween(3,1) and HasAtLeast(27588,3)">
+			<While Condition="IsTimeBetween(2,0) and HasAtLeast(27588,3)">
 				<Log Color="&LogTxt;" Message="Going to fish some clams!" />
 				<TeleportTo Name="Macarenses Angle" AetheryteId="148" Force="True" />
 				<ExPurify>
@@ -59,7 +59,7 @@
 				<NoCombatMoveTo Name="Movement Zone 1" XYZ="-37.65775, -233.2697, 508.4364" />
 				<NoCombatMoveTo Name="Movement Zone 2" XYZ="423.6716, -231.0157, 404.8511" />
 				<NoCombatMoveTo Name="Movement Zone 3" XYZ="453.6776, -227.3906, 443.0744" />
-				<Fish Condition="IsTimeBetween(3,1)" Snagging="true" Mooch="1" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
+				<Fish Condition="IsTimeBetween(2,0)" Snagging="true" Mooch="1" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
 					<FishSpots>
 						<FishSpot XYZ="527.5667, -241.1993, 448.5228" 	Heading="1.531891" Sit="True" />
 						<FishSpot XYZ="673.6089, -241.035, 490.6089" 	Heading="5.086076" Sit="True" />
@@ -68,7 +68,7 @@
 					</FishSpots>
 				</Fish>
 			</While>
-			<While Condition="IsTimeBetween(1,3) and HasAtLeast(27588,3)">
+			<While Condition="IsTimeBetween(0,2) and HasAtLeast(27588,3)">
 				<Log Color="&LogTxt;" Message="Resetting fish!" />
 				<TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
 				<NoCombatMoveTo Name="Movement Zone 1" XYZ="538.6176, 362.0053, -247.2706" />
@@ -80,7 +80,7 @@
 				<RunCode Name="Dismount" />
 				<RunCode Name="DisableMount" />
 				<RunCode Name="Stealth" />
-				<ExFish Condition="IsTimeBetween(1,3)" Stealth="True" Collect="True" FishEyes="False" Snagging="False" CordialType="Auto" MinFish="1" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
+				<ExFish Condition="IsTimeBetween(0,2)" Stealth="True" Collect="True" FishEyes="False" Snagging="False" CordialType="Auto" MinFish="1" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
 					<Keepers>
 						<Keeper Name="Predator"/>
 						<Keeper Name="Sweetflesh Oyster"/>
