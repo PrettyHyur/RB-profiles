@@ -40,6 +40,7 @@
 		</CodeChunk>		
 	</CodeChunks>
 	<Order>
+		<ExDisablePlugins Names="Enable Flight"/>
 		<WaitTimer WaitTime="10" />
 		<RunCode Name="Miner" />
 		<WaitTimer WaitTime="1" />

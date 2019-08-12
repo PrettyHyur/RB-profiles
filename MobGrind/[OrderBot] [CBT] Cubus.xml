@@ -51,6 +51,7 @@
 		</GrindArea>
 	</GrindAreas>
 	<Order>
+		<ExDisablePlugins Names="Enable Flight"/>
 		<Log Color="&LogTxt;" Name="Grind" Message="Starting the Cubus Flesh Grind!" />
 		<RunCode Name="Combat" />
 		<WaitTimer WaitTime="2" />
