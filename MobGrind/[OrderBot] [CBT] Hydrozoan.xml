@@ -48,7 +48,7 @@
 		</GrindArea>
 	</GrindAreas>
 	<Order>
-		<ExDisablePlugins Names="Enable Flight"/>
+		<ExEnablePlugins Names="Enable Flight"/>
 		<Log Color="&LogTxt;" Name="Grind" Message="Starting the Hydrozoan Umbrella Grind!" />
 		<RunCode Name="Combat" />
 		<WaitTimer WaitTime="2" />

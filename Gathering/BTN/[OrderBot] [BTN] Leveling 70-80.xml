@@ -40,7 +40,7 @@
 		</CodeChunk>
 	</CodeChunks>
 	<Order>
-		<ExDisablePlugins Names="Enable Flight"/>
+		<ExEnablePlugins Names="Enable Flight"/>
 		<WaitTimer WaitTime="10" />
 		<RunCode Name="Botanist" />
 		<WaitTimer WaitTime="1" />

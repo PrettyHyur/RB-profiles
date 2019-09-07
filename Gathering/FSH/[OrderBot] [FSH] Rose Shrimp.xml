@@ -38,7 +38,7 @@
 		</CodeChunk>
 	</CodeChunks>
 	<Order>
-		<ExDisablePlugins Names="Enable Flight"/>
+		<ExEnablePlugins Names="Enable Flight"/>
 		<WaitTimer WaitTime="5" />	
 		<RunCode Name="Fisher" />
 		<WaitTimer WaitTime="2" />
