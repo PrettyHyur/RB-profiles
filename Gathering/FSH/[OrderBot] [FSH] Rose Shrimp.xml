@@ -52,6 +52,7 @@
 				<TeleportTo Name="Wright" AetheryteId="138" />
 				<NoCombatMoveTo Name="Local Merchant" XYZ="-309.7429, 20.96825, 366.9031" />
 				<BuyItem ItemId="27582" ItemCount="99" DialogOption="6" InteractDistance="3.0" NpcId="1027429" XYZ="-307.5529, 20.97029, 367.7966"/>
+					<WaitWhile Condition="IsTimeBetween(0,1) and HasAtLeast(27582,100)"/>
 			</While>
 		  	<While Condition="IsTimeBetween(2,24) and HasAtLeast(27588,3)">
 				<Log Color="&LogTxt;" Message="Going to fish some Rose Shrimp!" />
@@ -68,7 +69,7 @@
 			<While Condition="IsTimeBetween(1,2) and HasAtLeast(27582,5)">
 				<Log Color="&LogTxt;" Message="Resetting fish!" />
 				<TeleportTo Name="Wright" AetheryteId="138" Force="True" />
-				<ExFish Condition="IsTimeBetween(1,2)" Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="1" MaxFish="5">
+				<ExFish Condition="IsTimeBetween(1,2)" Snagging="true" Mooch="0" Bait="Fruit Worm" MinFish="1" MaxFish="5">
 					<FishSpots>
 						<FishSpot XYZ="431.4356, 36.41109, 75.50977" Heading="4.78" Sit="True" />
 					</FishSpots>
