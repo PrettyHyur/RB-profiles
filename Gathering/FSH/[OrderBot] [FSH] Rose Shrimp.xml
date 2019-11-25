@@ -60,8 +60,8 @@
 				<ExFish Condition="IsTimeBetween(2,24)" Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
 					<FishSpots>
 						<FishSpot XYZ="-786.8018, -0.5988511, 512.4433" Heading="4.844145" Sit="True" />
-						<FishSpot XYZ="-657.4449, -1.107956, 685.4854" Heading="0.215881" Sit="True" />
-						<FishSpot XYZ="-676.0908, -0.6085914, 607.7499" Heading="1.258837" Sit="True" />
+						<FishSpot XYZ="-671.9017, 0.7111499, 668.7593" Heading="2.715246" Sit="True" />
+						<FishSpot XYZ="-667.0064, -0.5221032, 687.1022" Heading="1.599274" Sit="True" />
 						<FishSpot XYZ="-596.753, 0.2128593, 567.9592" Heading="5.887372" Sit="True" />
 					</FishSpots>
 				</ExFish>
