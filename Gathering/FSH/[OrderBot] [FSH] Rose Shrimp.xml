@@ -46,13 +46,13 @@
 			<Log Color="&LogTxt;" Message="Buy some Short Bill Minnow from Eulmore!" />
 		</While>
 		<While Condition="Core.Me.CurrentJob == ClassJobType.Fisher">
+			<WaitWhile Condition="IsTimeBetween(0,1) and HasAtLeast(27582,100)"/>
 			<Log Color="&LogTxt;" Message="Don't leave me unattended!" />
 			<While Condition="IsTimeBetween(0,1) and not HasAtLeast(27582,100)">
 				<Log Color="&LogTxt;" Message="Buying Fruit Worm" />
 				<TeleportTo Name="Wright" AetheryteId="138" />
 				<NoCombatMoveTo Name="Local Merchant" XYZ="-309.7429, 20.96825, 366.9031" />
 				<BuyItem ItemId="27582" ItemCount="99" DialogOption="6" InteractDistance="3.0" NpcId="1027429" XYZ="-307.5529, 20.97029, 367.7966"/>
-					<WaitWhile Condition="IsTimeBetween(0,1) and HasAtLeast(27582,100)"/>
 			</While>
 		  	<While Condition="IsTimeBetween(2,24) and HasAtLeast(27588,3)">
 				<Log Color="&LogTxt;" Message="Going to fish some Rose Shrimp!" />
