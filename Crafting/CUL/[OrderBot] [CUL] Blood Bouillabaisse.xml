@@ -200,7 +200,6 @@
                     <While Condition="HasAtLeast(27588,3) and ItemCount(27513) &lt; (&DividedAmount;*2)">
                         <Log Color="&LogTxt;" Message="Going to fish some Sweetflesh Oyster!" />
                         <TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
-                        <ExPurify>
                         <RunCode Name="EnableMount" />
                         <NoCombatMoveTo Name="Movement Zone 1" XYZ="538.6176, 362.0053, -247.2706" />
                         <NoCombatMoveTo Name="Movement Zone 2" XYZ="477.7508, 345.908, -270.1841" />
@@ -218,15 +217,15 @@
                             <FishSpots>
                                 <FishSpot XYZ="377.0307, 231.6881, -336.7995" Heading="1.592814" Sit="True" />
                                 <FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
-                                <FishSpot XYZ="347.3893, 294.8917, -307.9272" Heading="5.035699" Sit="True" />
+                                <FishSpot XYZ="346.7965, 294.8002, -307.7515" Heading="5.147414" Sit="True" />
                             </FishSpots>
                         </ExFish>
                         <RunCode Name="EnableMount" />
-                        <ExPurify>
-                            <Item>Predator</Item>
-                        </ExPurify>
                     </While>
                 <If Condition="not(ItemCount(27513) &lt; (&DividedAmount;*2))">
+                    <ExPurify>
+                        <Item>Predator</Item>
+                    </ExPurify>
                     <Log Color="&LogTxt;" Message="I think I'm done with Sweetflesh Oyster!" />
                 </If>
             </While>
