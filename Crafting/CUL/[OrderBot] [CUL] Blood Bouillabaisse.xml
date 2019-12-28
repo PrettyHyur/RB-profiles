@@ -151,7 +151,7 @@
                 <TeleportTo Name="Lydha Lran" AetheryteId="144" Force="True" />
                 <ExEnablePlugins Names="Enable Flight"/>
                 <RunCode Name="Botanist" />
-                <ExGather DiscoverUnknowns="true" While="ItemCount(27825) &lt; (&DividedAmount;)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
+                <ExGather DiscoverUnknowns="true" While="ItemCount(27825) &lt; (&DividedAmount;*2)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
                     <GatherObject>Lush Vegetation Patch</GatherObject>
                     <ItemNames>
                         <ItemName>Blood Tomato</ItemName>
