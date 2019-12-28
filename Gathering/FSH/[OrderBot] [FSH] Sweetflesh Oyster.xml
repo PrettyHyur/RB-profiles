@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##################################################
+# Profile: [OrderBot] [FSH] Sweetflesh Oyster	 #
+##################################################
+# Author: PrettyHyur	                         #
+##################################################
+# Version: 0.1                                   #
+##################################################
+# Required Level: 80 FSH                         #
+# Other Requirements: Tempest Unlocked / Flying	 #
+# Buy some Short Bill Minnow				 	 #
+##################################################
+# Required Setup:                                #
+# Fill out the gear set number in the Fisher     #
+# codechunk below (line 24).                     #
+##################################################
+-->
+<!DOCTYPE Profile [ <!ENTITY LogTxt "#f542c5"> <!ENTITY MinFish "15"> <!ENTITY MaxFish "25"> ]>
+<Profile>
+	<Name>[OrderBot] [FSH] Sweetflesh Oyster (v0.1)</Name>
+	<KillRadius>90</KillRadius>
+	<CodeChunks>
+		<CodeChunk Name="Fisher">
+			<![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+			<![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
+		</CodeChunk>
+		<CodeChunk Name="DisableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = false; ]]>
+		</CodeChunk>
+        <CodeChunk Name="MountDistance">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.MountDistance = 10; ]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableMount">
+			<![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = true; ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<Order>
+		<ExEnablePlugins Names="Enable Flight"/>
+		<WaitTimer WaitTime="5" />	
+		<RunCode Name="Fisher" />
+		<WaitTimer WaitTime="2" />
+		<RunCode Name="MountDistance" />
+		<While Condition="not HasAtLeast(27588,3)">
+			<Log Color="&LogTxt;" Message="Buy some Short Bill Minnow from Eulmore!" />
+		</While>
+		<While Condition="Core.Me.CurrentJob == ClassJobType.Fisher">
+			<Log Color="&LogTxt;" Message="Don't leave me unattended!" />
+		  	<While Condition="IsTimeBetween(2,0) and HasAtLeast(27588,3)">
+				<Log Color="&LogTxt;" Message="Going to fish some Sweetflesh Oyster!" />
+				<TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
+				<ExPurify>
+					<Item>Predator</Item>
+				</ExPurify>
+				<NoCombatMoveTo Name="Movement Zone 1" XYZ="538.6176, 362.0053, -247.2706" />
+				<NoCombatMoveTo Name="Movement Zone 2" XYZ="477.7508, 345.908, -270.1841" />
+				<NoCombatMoveTo Name="Movement Zone 3" XYZ="484.743, 323.0126, -299.9759" />
+				<NoCombatMoveTo Name="Movement Zone 4" XYZ="389.4394, 312.9135, -273.9686" />
+				<NoCombatMoveTo Name="Movement Zone 5" XYZ="316.8263, 277.7139, -307.4475" />
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="Dismount" />
+				<RunCode Name="DisableMount" />
+				<ExFish Condition="IsTimeBetween(2,0)" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
+					<Keepers>
+						<Keeper Name="Predator"/>
+						<Keeper Name="Sweetflesh Oyster"/>
+					</Keepers>
+					<PatienceTugs>
+						<PatienceTug Mooch="0" TugType="Medium"/>
+					</PatienceTugs>
+					<FishSpots>
+						<FishSpot XYZ="377.0307, 231.6881, -336.7995" 	Heading="1.592814" Sit="True" />
+						<FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
+						<FishSpot XYZ="343.5728, 294.1012, -310.1732" Heading="4.875957" Sit="True" />
+					</FishSpots>
+				</ExFish>
+				<RunCode Name="EnableMount" />
+			</While>
+			<While Condition="IsTimeBetween(0,2) and HasAtLeast(27588,3)">
+				<Log Color="&LogTxt;" Message="Going to reset fish!" />
+				<TeleportTo Name="Macarenses Angle" AetheryteId="148" Force="True" />
+				<NoCombatMoveTo Name="Movement Zone 1" XYZ="-37.65775, -233.2697, 508.4364" />
+				<NoCombatMoveTo Name="Movement Zone 2" XYZ="423.6716, -231.0157, 404.8511" />
+				<NoCombatMoveTo Name="Movement Zone 3" XYZ="453.6776, -227.3906, 443.0744" />
+				<ExFish Condition="IsTimeBetween(0,2)" Snagging="True" Mooch="1" Bait="Short Bill Minnow" MinFish="1" MaxFish="5" ShuffleFishSpots="True">
+					<FishSpots>
+						<FishSpot XYZ="527.5667, -241.1993, 448.5228" 	Heading="1.531891" Sit="True" />
+						<FishSpot XYZ="673.6089, -241.035, 490.6089" 	Heading="5.086076" Sit="True" />
+						<FishSpot XYZ="592.302, -236.544, 476.9912"		Heading="2.020275" Sit="True" />
+						<FishSpot XYZ="619.4036, -241.0673, 403.9318"	Heading="5.496966" Sit="True" />
+					</FishSpots>
+				</ExFish>
+			</While>
+		</While>
+	</Order>
+</Profile>
+				
