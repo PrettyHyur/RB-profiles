@@ -106,7 +106,7 @@
             <!-- Fire Crystal -->
             <While Condition="ItemCount(8) &lt; (&DividedAmount;*10)">
                 <Log Color="&LogTxt;" Message="Going to get some Fire Crystal!" />
-                <TeleportTo Name="Tailfeather" AetheryteId="76" Force="True" />
+                <TeleportTo Name="Tailfeather" AetheryteId="76" />
                 <ExEnablePlugins Names="Enable Flight"/>
                 <RunCode Name="Botanist" />
                 <ExGather DiscoverUnknowns="true" While="ItemCount(8) &lt; (&DividedAmount;*10)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
@@ -169,7 +169,7 @@
             <!-- Water Crystal -->
             <While Condition="ItemCount(13) &lt; (&DividedAmount;*7)">
                 <Log Color="&LogTxt;" Message="Going to get some Water Crystal!" />
-                <TeleportTo Name="Lydha Lran" AetheryteId="144" Force="True" />
+                <TeleportTo Name="Lydha Lran" AetheryteId="144" />
                 <ExEnablePlugins Names="Enable Flight"/>
                 <RunCode Name="Botanist" />
                 <ExGather DiscoverUnknowns="true" While="ItemCount(13) &lt; (&DividedAmount;*7)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
