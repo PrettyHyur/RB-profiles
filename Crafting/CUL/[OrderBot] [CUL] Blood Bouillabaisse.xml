@@ -217,7 +217,7 @@
                             <FishSpots>
                                 <FishSpot XYZ="377.0307, 231.6881, -336.7995" Heading="1.592814" Sit="True" />
                                 <FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
-                                <FishSpot XYZ="346.7965, 294.8002, -307.7515" Heading="5.147414" Sit="True" />
+                                <!--<FishSpot XYZ="344.8099, 294.4321, -310.1246" Heading="4.796778" Sit="True" /> -->
                             </FishSpots>
                         </ExFish>
                         <RunCode Name="EnableMount" />
@@ -268,6 +268,7 @@
             <If Condition="&Craft; !=0">
                 <While Condition="ItemCount(27838) &lt; (&DividedAmount;)">
                     <RunCode Name="Culinarian" />
+                    <WaitTimer WaitTime="2" />
                     <Log Color="&LogTxt;" Message="Going to try and craft!" />
                     <Synthesize RecipeId="3877" MinimumCp="449" HqMats="-1" />
                     <CraftAction Name="Reflect" />
@@ -290,6 +291,7 @@
                 <WaitTimer WaitTime="2" />
                 <While Condition="ItemCount(27876) &lt; (&Amount;)">
                     <RunCode Name="Culinarian" />
+                    <WaitTimer WaitTime="2" />
                     <Log Color="&LogTxt;" Message="Going to try and craft!" />
                     <Synthesize RecipeId="3906" MinimumCp="449" HqMats="-1,-1,-1,-1,-1,-1" />
                     <CraftAction Name="Reflect" />
