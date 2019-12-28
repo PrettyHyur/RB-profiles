@@ -201,8 +201,6 @@
                         <Log Color="&LogTxt;" Message="Going to fish some Sweetflesh Oyster!" />
                         <TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
                         <ExPurify>
-                            <Item>Predator</Item>
-                        </ExPurify>
                         <RunCode Name="EnableMount" />
                         <NoCombatMoveTo Name="Movement Zone 1" XYZ="538.6176, 362.0053, -247.2706" />
                         <NoCombatMoveTo Name="Movement Zone 2" XYZ="477.7508, 345.908, -270.1841" />
@@ -224,6 +222,9 @@
                             </FishSpots>
                         </ExFish>
                         <RunCode Name="EnableMount" />
+                        <ExPurify>
+                            <Item>Predator</Item>
+                        </ExPurify>
                     </While>
                 <If Condition="not(ItemCount(27513) &lt; (&DividedAmount;*2))">
                     <Log Color="&LogTxt;" Message="I think I'm done with Sweetflesh Oyster!" />
