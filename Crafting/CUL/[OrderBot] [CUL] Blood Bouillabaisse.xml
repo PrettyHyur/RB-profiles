@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################
+# Profile: [OrderBot] [CUL][FSH][BTN] Blood Bouillabaisse	 #
+##############################################################
+# Author: PrettyHyur	                                     #
+##############################################################
+# Version: 0.1                                               #
+##############################################################
+# Required Level: 80 FSH, 80 CUL, 80 BTN                     #
+# Other Requirements: All Zones Unlocked / Flying            #
+# Buy some Short Bill Minnow				 	             #
+##############################################################
+# Required Setup:                                            #
+# Fill out the gear set number in the Fisher, BTN and CUL    #
+# codechunk below (line 40, 43 & 46).                        #
+# Fill out the amount required below (line 25)               #
+##############################################################
+-->
+<!DOCTYPE Profile   [
+<!-- SETTINGS BELOW -->
+<!-- Would you like this profile to try and craft? -->
+<!ENTITY Craft "1">
+<!-- Amount of Blood Bouillabaisse to make (please type multiples of 3) -->
+<!ENTITY Amount "30">
+<!ENTITY DividedAmount "&Amount;/3">
+<!-- Sets log text colour -->
+<!ENTITY LogTxt "#f542c5">
+<!-- Cordial Settings -->
+<!ENTITY CordialType "Cordial">
+<!ENTITY CordialTime "Auto">
+<!-- Sets min/max fish amount before shuffle -->
+<!ENTITY MinFish "5"><!ENTITY MaxFish "10">
+]><Profile>
+    <Name>[OrderBot] [CUL][FSH][BTN] Blood Bouillabaisse (v0.1)</Name>
+    <KillRadius>90</KillRadius>
+    <CodeChunks>
+        <CodeChunk Name="Fisher">
+            <![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
+        </CodeChunk>
+        <CodeChunk Name="Botanist">
+            <![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 20"); ]]>
+        </CodeChunk>
+        <CodeChunk Name="Culinarian">
+            <![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 18"); ]]>
+        </CodeChunk>
+        <CodeChunk Name="Dismount">
+            <![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
+        </CodeChunk>
+        <CodeChunk Name="DisableMount">
+            <![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = false; ]]>
+        </CodeChunk>
+        <CodeChunk Name="MountDistance">
+            <![CDATA[ ff14bot.Settings.CharacterSettings.Instance.MountDistance = 25; ]]>
+        </CodeChunk>
+        <CodeChunk Name="EnableMount">
+            <![CDATA[ ff14bot.Settings.CharacterSettings.Instance.UseMount = true; ]]>
+        </CodeChunk>
+    </CodeChunks>
+    <Order>
+        <RunCode Name="MountDistance" />
+        <RunCode Name="EnableMount" />
+        <!-- Gathering -->
+        <While Condition="ItemCount(8) &lt; (&DividedAmount;*10) or ItemCount(13) &lt; (&DividedAmount;*7) or ItemCount(27820) &lt; (&DividedAmount;*5) or ItemCount(12878) &lt; (&DividedAmount;) or ItemCount(4843) &lt; (&DividedAmount;) or ItemCount(27451) &lt; (&DividedAmount;) or ItemCount(27825) &lt; (&DividedAmount;*2) or ItemCount(27513) &lt; (&DividedAmount;*2)">
+            <!-- BTN -->
+            <!-- Frantoio -->
+            <While Condition="ItemCount(27820) &lt; (&DividedAmount;*5)">
+                <Log Color="&LogTxt;" Message="Going to get some Frantoio!" />
+                <TeleportTo Name="Fort Jobb" AetheryteId="132" Force="True" />
+                <ExEnablePlugins Names="Enable Flight"/>
+                <RunCode Name="Botanist" />
+                <ExGather DiscoverUnknowns="true" While="ItemCount(27820) &lt; (&DividedAmount;*5)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
+                    <GatherObject>Mature Tree</GatherObject>
+                    <HotSpots>
+                        <HotSpot Radius="95" XYZ="734.2094, 15.66289, 97.60391" />
+                        <HotSpot Radius="95" XYZ="668.1399, 16.86567, 111.6981" />
+                        <HotSpot Radius="95" XYZ="654.4594, 13.25198, 277.561" />
+                    </HotSpots>
+                    <Slot>1</Slot>
+                </ExGather>
+                <If Condition="not(ItemCount(27820) &lt; (&DividedAmount;*5))">
+                    <Log Color="&LogTxt;" Message="I think I have enough Frantoio!" />
+                </If>
+            </While>
+            <!-- Cyclops Onion -->
+            <While Condition="ItemCount(12878) &lt; (&DividedAmount;)">
+                <Log Color="&LogTxt;" Message="Going to get some Cyclops Onion!" />
+                <TeleportTo Name="Tailfeather" AetheryteId="76" Force="True" />
+                <ExEnablePlugins Names="Enable Flight"/>
+                <RunCode Name="Botanist" />
+                <ExGather DiscoverUnknowns="true" While="ItemCount(12878) &lt; (&DividedAmount;)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
+                    <GatherObject>Lush Vegetation Patch</GatherObject>
+                    <ItemNames>
+                        <ItemName>Cyclops Onion</ItemName>
+                    </ItemNames>
+                    <HotSpots>
+                        <HotSpot Radius="95" XYZ="685.2637, -52.46249, -121.1256" />
+                        <HotSpot Radius="95" XYZ="808.6435, -39.03043, -96.47137" />
+                        <HotSpot Radius="95" XYZ="745.2182, -33.67987, -265.4745" />
+                    </HotSpots>
+                </ExGather>
+                <If Condition="not(ItemCount(12878) &lt; (&DividedAmount;))">
+                    <Log Color="&LogTxt;" Message="I think I'm done with Cyclops Onion!" />
+                </If>
+            </While>
+            <!-- Fire Crystal -->
+            <While Condition="ItemCount(8) &lt; (&DividedAmount;*10)">
+                <Log Color="&LogTxt;" Message="Going to get some Fire Crystal!" />
+                <TeleportTo Name="Tailfeather" AetheryteId="76" Force="True" />
+                <ExEnablePlugins Names="Enable Flight"/>
+                <RunCode Name="Botanist" />
+                <ExGather DiscoverUnknowns="true" While="ItemCount(8) &lt; (&DividedAmount;*10)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
+                    <GatherObject>Lush Vegetation Patch</GatherObject>
+                    <ItemNames>
+                        <ItemName>Fire Crystal</ItemName>
+                    </ItemNames>
+                    <HotSpots>
+                        <HotSpot Radius="95" XYZ="685.2637, -52.46249, -121.1256" />
+                        <HotSpot Radius="95" XYZ="808.6435, -39.03043, -96.47137" />
+                        <HotSpot Radius="95" XYZ="745.2182, -33.67987, -265.4745" />
+                    </HotSpots>
+                </ExGather>
+                <If Condition="not(ItemCount(8) &lt; (&DividedAmount;*10))">
+                    <Log Color="&LogTxt;" Message="I think I'm done with Fire Crystal!" />
+                </If>
+            </While>                        
+            <!-- Desert Saffron -->
+            <While Condition="ItemCount(4843) &lt; (&DividedAmount;)">
+                <Log Color="&LogTxt;" Message="Going to get some Desert Saffron!" />
+                <TeleportTo Name="Little Ala Mhigo" AetheryteId="19" Force="True" />
+                <ExDisablePlugins Names="Enable Flight"/>
+                <RunCode Name="Botanist" />
+                <ExGather DiscoverUnknowns="true" While="ItemCount(4843) &lt; (&DividedAmount;)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
+                    <GatherObject>Lush Vegetation Patch</GatherObject>
+                    <ItemNames>
+                        <ItemName>Desert Saffron</ItemName>
+                    </ItemNames>
+                    <HotSpots>
+                        <HotSpot Radius="95" XYZ="-29.09243, 6.619102, -618.5465" />
+                        <HotSpot Radius="95" XYZ="-65.20965, 6.131346, -647.8212" />
+                        <HotSpot Radius="95" XYZ="-17.63413, 3.109039, -666.9537" />
+                    </HotSpots>
+                </ExGather>
+                <If Condition="not(ItemCount(4843) &lt; (&DividedAmount;))">
+                    <Log Color="&LogTxt;" Message="I think I'm done with Desert Saffron!" />
+                </If>
+            </While>
+            <!-- Blood Tomato -->
+            <While Condition="ItemCount(27825) &lt; (&DividedAmount;*2)">
+                <Log Color="&LogTxt;" Message="Going to get some Blood Tomato!" />
+                <TeleportTo Name="Lydha Lran" AetheryteId="144" Force="True" />
+                <ExEnablePlugins Names="Enable Flight"/>
+                <RunCode Name="Botanist" />
+                <ExGather DiscoverUnknowns="true" While="ItemCount(27825) &lt; (&DividedAmount;)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
+                    <GatherObject>Lush Vegetation Patch</GatherObject>
+                    <ItemNames>
+                        <ItemName>Blood Tomato</ItemName>
+                    </ItemNames>
+                    <HotSpots>
+                        <HotSpot Radius="95" XYZ="-494.1703, 36.08229, 140.3885" />
+                        <HotSpot Radius="95" XYZ="-374.9242, 2.21839, 66.59869" />
+                        <HotSpot Radius="95" XYZ="-489.9189, 5.862417, -53.08474" />
+                    </HotSpots>
+                </ExGather>
+                <If Condition="not(ItemCount(27825) &lt; (&DividedAmount;*2))">
+                    <Log Color="&LogTxt;" Message="I think I'm done with Blood Tomato!" />
+                </If>
+            </While>
+            <!-- Water Crystal -->
+            <While Condition="ItemCount(13) &lt; (&DividedAmount;*7)">
+                <Log Color="&LogTxt;" Message="Going to get some Water Crystal!" />
+                <TeleportTo Name="Lydha Lran" AetheryteId="144" Force="True" />
+                <ExEnablePlugins Names="Enable Flight"/>
+                <RunCode Name="Botanist" />
+                <ExGather DiscoverUnknowns="true" While="ItemCount(13) &lt; (&DividedAmount;*7)" CordialType="&CordialType;" CordialTime="&CordialTime;" GatherIncrease="Yield">
+                    <GatherObject>Lush Vegetation Patch</GatherObject>
+                    <ItemNames>
+                        <ItemName>Water Crystal</ItemName>
+                    </ItemNames>
+                    <HotSpots>
+                        <HotSpot Radius="95" XYZ="-494.1703, 36.08229, 140.3885" />
+                        <HotSpot Radius="95" XYZ="-374.9242, 2.21839, 66.59869" />
+                        <HotSpot Radius="95" XYZ="-489.9189, 5.862417, -53.08474" />
+                    </HotSpots>
+                </ExGather>
+                <If Condition="not(ItemCount(13) &lt; (&DividedAmount;*7))">
+                    <Log Color="&LogTxt;" Message="I think I'm done with Water Crystal!" />
+                </If>
+            </While>             
+            <!-- FSH -->
+            <ExEnablePlugins Names="Enable Flight"/>
+            <RunCode Name="EnableMount" />
+            <!-- Sweetflesh Oyster -->
+            <While Condition="ItemCount(27513) &lt; (&DividedAmount;*2)">
+                <While Condition="not HasAtLeast(27588,3)">
+                    <Log Color="&LogTxt;" Message="Buy some Short Bill Minnow from Eulmore!" />
+                </While>
+                <RunCode Name="Fisher" />               
+                    <Log Color="&LogTxt;" Message="Don't leave me unattended!" />
+                    <While Condition="HasAtLeast(27588,3) and ItemCount(27513) &lt; (&DividedAmount;*2)">
+                        <Log Color="&LogTxt;" Message="Going to fish some Sweetflesh Oyster!" />
+                        <TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
+                        <ExPurify>
+                            <Item>Predator</Item>
+                        </ExPurify>
+                        <RunCode Name="EnableMount" />
+                        <NoCombatMoveTo Name="Movement Zone 1" XYZ="538.6176, 362.0053, -247.2706" />
+                        <NoCombatMoveTo Name="Movement Zone 2" XYZ="477.7508, 345.908, -270.1841" />
+                        <NoCombatMoveTo Name="Movement Zone 3" XYZ="484.743, 323.0126, -299.9759" />
+                        <NoCombatMoveTo Name="Movement Zone 4" XYZ="389.4394, 312.9135, -273.9686" />
+                        <NoCombatMoveTo Name="Movement Zone 5" XYZ="316.8263, 277.7139, -307.4475" />
+                        <WaitTimer WaitTime="2" />
+                        <RunCode Name="Dismount" />
+                        <RunCode Name="DisableMount" />
+                        <ExFish Condition="ItemCount(27513) &lt; (&DividedAmount;*2)" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Mount="False">
+                            <Keepers>
+                                <Keeper Name="Predator"/>
+                                <Keeper Name="Sweetflesh Oyster"/>
+                            </Keepers>
+                            <FishSpots>
+                                <FishSpot XYZ="377.0307, 231.6881, -336.7995" Heading="1.592814" Sit="True" />
+                                <FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
+                                <FishSpot XYZ="347.3893, 294.8917, -307.9272" Heading="5.035699" Sit="True" />
+                            </FishSpots>
+                        </ExFish>
+                        <RunCode Name="EnableMount" />
+                    </While>
+                <If Condition="not(ItemCount(27513) &lt; (&DividedAmount;*2))">
+                    <Log Color="&LogTxt;" Message="I think I'm done with Sweetflesh Oyster!" />
+                </If>
+            </While>
+            <!-- Rose Shrimp -->
+            <While Condition="ItemCount(27451) &lt; (&DividedAmount;)">
+                <While Condition="not HasAtLeast(27588,3)">
+                    <Log Color="&LogTxt;" Message="Buy some Short Bill Minnow from Eulmore!" />
+                </While>
+                <RunCode Name="Fisher" />
+                <RunCode Name="EnableMount" />
+                <ExEnablePlugins Names="Enable Flight"/>
+                    <Log Color="&LogTxt;" Message="Don't leave me unattended!" />
+                    <While Condition="HasAtLeast(27588,3) and ItemCount(27451) &lt; (&DividedAmount;)">
+                        <Log Color="&LogTxt;" Message="Going to fish some Rose Shrimp!" />
+                        <TeleportTo Name="Wright" AetheryteId="138" />
+                        <NoCombatMoveTo Name="Movement Zone 1" XYZ="-614.2444, 17.4005, 538.6078"  />
+                        <WaitTimer WaitTime="2" />
+                        <RunCode Name="Dismount" />
+                        <ExFish Condition="ItemCount(27451) &lt; (&DividedAmount;)" Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
+                            <FishSpots>
+                                <FishSpot XYZ="-786.8018, -0.5988511, 512.4433" Heading="4.844145" Sit="True" />
+                                <FishSpot XYZ="-671.9017, 0.7111499, 668.7593" Heading="2.715246" Sit="True" />
+                                <FishSpot XYZ="-667.0064, -0.5221032, 687.1022" Heading="1.599274" Sit="True" />
+                                <FishSpot XYZ="-596.753, 0.2128593, 567.9592" Heading="5.887372" Sit="True" />
+                            </FishSpots>
+                        </ExFish>
+                    </While>
+                <If Condition="not(ItemCount(27451) &lt; (&DividedAmount;))">
+                    <Log Color="&LogTxt;" Message="I think I'm done with Rose Shrimp!" />
+                </If>
+            </While>
+        </While>
+        <If Condition="not(ItemCount(8) &lt; (&DividedAmount;*10) or ItemCount(13) &lt; (&DividedAmount;*7) or ItemCount(27820) &lt; (&DividedAmount;*5) or ItemCount(12878) &lt; (&DividedAmount;) or ItemCount(4843) &lt; (&DividedAmount;) or ItemCount(27451) &lt; (&DividedAmount;) or ItemCount(27825) &lt; (&DividedAmount;*2) or ItemCount(27513) &lt; (&DividedAmount;*2))">
+            <Log Color="&LogTxt;" Message="I think I'm done gathering?" />
+        </If>
+        <If Condition="not(ItemCount(8) &lt; (&DividedAmount;*10) or ItemCount(13) &lt; (&DividedAmount;*7) or ItemCount(27820) &lt; (&DividedAmount;*5) or ItemCount(12878) &lt; (&DividedAmount;) or ItemCount(4843) &lt; (&DividedAmount;) or ItemCount(27451) &lt; (&DividedAmount;) or ItemCount(27825) &lt; (&DividedAmount;*2) or ItemCount(27513) &lt; (&DividedAmount;*2))">
+        <!-- Crafting -->
+            <TeleportTo Name="Eulmore" AetheryteId="134" Force="True" />
+            <NoCombatMoveTo Name="Crafting Space" XYZ="-0.004471848, 82.08698, -19.56952" Heading="0.01287723" />
+            <If Condition="&Craft; !=0">
+                <While Condition="ItemCount(27838) &lt; (&DividedAmount;)">
+                    <RunCode Name="Culinarian" />
+                    <Log Color="&LogTxt;" Message="Going to try and craft!" />
+                    <Synthesize RecipeId="3877" MinimumCp="449" HqMats="-1" />
+                    <CraftAction Name="Reflect" />
+                    <CraftAction Name="Ingenuity" />
+                    <CraftAction Name="Innovation" />
+                    <CraftAction Name="Delicate Synthesis" />
+                    <CraftAction Name="Prudent Touch" />
+                    <CraftAction Name="Manipulation" />
+                    <CraftAction Name="Ingenuity" />
+                    <CraftAction Name="Innovation" />
+                    <CraftAction Name="Prudent Touch" />
+                    <CraftAction Name="Prudent Touch" />
+                    <CraftAction Name="Great Strides" />
+                    <CraftAction Name="Innovation" />
+                    <CraftAction Name="Byregot's Blessing" />
+                    <CraftAction Name="Basic Synthesis" />
+                    <CraftAction Name="Basic Synthesis" />
+                </While>
+                <StopCrafting/>
+                <WaitTimer WaitTime="2" />
+                <While Condition="ItemCount(27876) &lt; (&Amount;)">
+                    <RunCode Name="Culinarian" />
+                    <Log Color="&LogTxt;" Message="Going to try and craft!" />
+                    <Synthesize RecipeId="3906" MinimumCp="449" HqMats="-1,-1,-1,-1,-1,-1" />
+                    <CraftAction Name="Reflect" />
+                    <CraftAction Name="Ingenuity" />
+                    <CraftAction Name="Innovation" />
+                    <CraftAction Name="Delicate Synthesis" />
+                    <CraftAction Name="Delicate Synthesis" />
+                    <CraftAction Name="Delicate Synthesis" />
+                    <CraftAction Name="Prudent Touch" />
+                    <CraftAction Name="Manipulation" />
+                    <CraftAction Name="Ingenuity" />
+                    <CraftAction Name="Innovation" />
+                    <CraftAction Name="Prudent Touch" />
+                    <CraftAction Name="Prudent Touch" />
+                    <CraftAction Name="Great Strides" />
+                    <CraftAction Name="Innovation" />
+                    <CraftAction Name="Byregot's Blessing" />
+                    <CraftAction Name="Basic Synthesis" />
+                    <CraftAction Name="Basic Synthesis" />
+                    <CraftAction Name="Basic Synthesis" />
+                    <CraftAction Name="Basic Synthesis" />
+                </While>
+                <StopCrafting/>
+            </If>
+        </If>
+    </Order>
+</Profile>

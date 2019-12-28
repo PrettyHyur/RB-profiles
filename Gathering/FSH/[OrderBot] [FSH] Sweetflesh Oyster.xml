@@ -62,14 +62,11 @@
 				<WaitTimer WaitTime="2" />
 				<RunCode Name="Dismount" />
 				<RunCode Name="DisableMount" />
-				<ExFish Condition="IsTimeBetween(2,0)" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Patience="Patience" MinimumGPPatience="600" Mount="False">
+				<ExFish Condition="IsTimeBetween(2,0)" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Mount="False">
 					<Keepers>
 						<Keeper Name="Predator"/>
 						<Keeper Name="Sweetflesh Oyster"/>
 					</Keepers>
-					<PatienceTugs>
-						<PatienceTug Mooch="0" TugType="Medium"/>
-					</PatienceTugs>
 					<FishSpots>
 						<FishSpot XYZ="377.0307, 231.6881, -336.7995" 	Heading="1.592814" Sit="True" />
 						<FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
