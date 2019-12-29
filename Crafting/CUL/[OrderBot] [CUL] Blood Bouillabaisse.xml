@@ -12,9 +12,7 @@
 # Buy some Short Bill Minnow				 	             #
 ##############################################################
 # Required Setup:                                            #
-# Fill out the gear set number in the Fisher, BTN and CUL    #
-# codechunk below (line 40, 43 & 46).                        #
-# Fill out the amount required below (line 25)               #
+# Fill out the amount required below (line 23)               #
 ##############################################################
 -->
 <!DOCTYPE Profile   [
@@ -36,11 +34,30 @@
     <Name>[OrderBot] [CUL][FSH][BTN] Blood Bouillabaisse (v0.1)</Name>
     <KillRadius>90</KillRadius>
     <CodeChunks>
+        <!-- Class change codechunks below are courtesy of Kayla D'orden - Llama Dev / https://github.com/nt153133/LlamaLibrary -->
         <CodeChunk Name="Fisher">
-            <![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 21"); ]]>
+            <![CDATA[ 
+            var gearSets = ff14bot.Managers.GearsetManager.GearSets.Where(i => i.InUse);
+            var newjob = ClassJobType.Fisher;
+            
+            if (Core.Player.CurrentJob != newjob && gearSets.Any(gs => gs.Class == newjob))
+            {
+                gearSets.First(gs => gs.Class == newjob).Activate();
+                await Coroutine.Sleep(1000);
+            }
+            ]]>
         </CodeChunk>
         <CodeChunk Name="Botanist">
-            <![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 20"); ]]>
+            <![CDATA[ 
+            var gearSets = ff14bot.Managers.GearsetManager.GearSets.Where(i => i.InUse);
+            var newjob = ClassJobType.Botanist;
+            
+            if (Core.Player.CurrentJob != newjob && gearSets.Any(gs => gs.Class == newjob))
+            {
+                gearSets.First(gs => gs.Class == newjob).Activate();
+                await Coroutine.Sleep(1000);
+            }
+            ]]>
         </CodeChunk>
         <CodeChunk Name="Culinarian">
             <![CDATA[ 
@@ -227,7 +244,7 @@
                         <FishSpots>
                             <FishSpot XYZ="377.0307, 231.6881, -336.7995" Heading="1.592814" Sit="True" />
                             <FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
-                            <!--<FishSpot XYZ="344.8099, 294.4321, -310.1246" Heading="4.796778" Sit="True" /> -->
+                            <!--<FishSpot XYZ="344.8099, 294.4321, -310.1246" Heading="4.796778" Sit="True" /> Need to figure this out -->
                         </FishSpots>
                     </ExFish>
                     <RunCode Name="EnableMount" />
