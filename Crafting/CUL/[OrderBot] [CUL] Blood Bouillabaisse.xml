@@ -22,7 +22,7 @@
 <!-- Would you like this profile to try and craft? -->
 <!ENTITY Craft "1">
 <!-- Amount of Blood Bouillabaisse to make (please type multiples of 3) -->
-<!ENTITY Amount "30">
+<!ENTITY Amount "99">
 <!ENTITY DividedAmount "&Amount;/3">
 <!-- Sets log text colour -->
 <!ENTITY LogTxt "#f542c5">
@@ -31,7 +31,8 @@
 <!ENTITY CordialTime "Auto">
 <!-- Sets min/max fish amount before shuffle -->
 <!ENTITY MinFish "5"><!ENTITY MaxFish "10">
-]><Profile>
+]>
+<Profile>
     <Name>[OrderBot] [CUL][FSH][BTN] Blood Bouillabaisse (v0.1)</Name>
     <KillRadius>90</KillRadius>
     <CodeChunks>
@@ -42,7 +43,16 @@
             <![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 20"); ]]>
         </CodeChunk>
         <CodeChunk Name="Culinarian">
-            <![CDATA[ ff14bot.Managers.ChatManager.SendChat("/gs change 18"); ]]>
+            <![CDATA[ 
+            var gearSets = ff14bot.Managers.GearsetManager.GearSets.Where(i => i.InUse);
+            var newjob = ClassJobType.Culinarian;
+            
+            if (Core.Player.CurrentJob != newjob && gearSets.Any(gs => gs.Class == newjob))
+            {
+                gearSets.First(gs => gs.Class == newjob).Activate();
+                await Coroutine.Sleep(1000);
+            }
+            ]]>
         </CodeChunk>
         <CodeChunk Name="Dismount">
             <![CDATA[ ff14bot.Managers.ActionManager.Dismount(); ]]>
@@ -123,7 +133,7 @@
                 <If Condition="not(ItemCount(8) &lt; (&DividedAmount;*10))">
                     <Log Color="&LogTxt;" Message="I think I'm done with Fire Crystal!" />
                 </If>
-            </While>                        
+            </While>
             <!-- Desert Saffron -->
             <While Condition="ItemCount(4843) &lt; (&DividedAmount;)">
                 <Log Color="&LogTxt;" Message="Going to get some Desert Saffron!" />
@@ -186,7 +196,7 @@
                 <If Condition="not(ItemCount(13) &lt; (&DividedAmount;*7))">
                     <Log Color="&LogTxt;" Message="I think I'm done with Water Crystal!" />
                 </If>
-            </While>             
+            </While>
             <!-- FSH -->
             <ExEnablePlugins Names="Enable Flight"/>
             <RunCode Name="EnableMount" />
@@ -195,33 +205,33 @@
                 <While Condition="not HasAtLeast(27588,3)">
                     <Log Color="&LogTxt;" Message="Buy some Short Bill Minnow from Eulmore!" />
                 </While>
-                <RunCode Name="Fisher" />               
-                    <Log Color="&LogTxt;" Message="Don't leave me unattended!" />
-                    <While Condition="HasAtLeast(27588,3) and ItemCount(27513) &lt; (&DividedAmount;*2)">
-                        <Log Color="&LogTxt;" Message="Going to fish some Sweetflesh Oyster!" />
-                        <TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
-                        <RunCode Name="EnableMount" />
-                        <NoCombatMoveTo Name="Movement Zone 1" XYZ="538.6176, 362.0053, -247.2706" />
-                        <NoCombatMoveTo Name="Movement Zone 2" XYZ="477.7508, 345.908, -270.1841" />
-                        <NoCombatMoveTo Name="Movement Zone 3" XYZ="484.743, 323.0126, -299.9759" />
-                        <NoCombatMoveTo Name="Movement Zone 4" XYZ="389.4394, 312.9135, -273.9686" />
-                        <NoCombatMoveTo Name="Movement Zone 5" XYZ="316.8263, 277.7139, -307.4475" />
-                        <WaitTimer WaitTime="2" />
-                        <RunCode Name="Dismount" />
-                        <RunCode Name="DisableMount" />
-                        <ExFish Condition="ItemCount(27513) &lt; (&DividedAmount;*2)" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Mount="False">
-                            <Keepers>
-                                <Keeper Name="Predator"/>
-                                <Keeper Name="Sweetflesh Oyster"/>
-                            </Keepers>
-                            <FishSpots>
-                                <FishSpot XYZ="377.0307, 231.6881, -336.7995" Heading="1.592814" Sit="True" />
-                                <FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
-                                <!--<FishSpot XYZ="344.8099, 294.4321, -310.1246" Heading="4.796778" Sit="True" /> -->
-                            </FishSpots>
-                        </ExFish>
-                        <RunCode Name="EnableMount" />
-                    </While>
+                <RunCode Name="Fisher" />
+                <Log Color="&LogTxt;" Message="Don't leave me unattended!" />
+                <While Condition="HasAtLeast(27588,3) and ItemCount(27513) &lt; (&DividedAmount;*2)">
+                    <Log Color="&LogTxt;" Message="Going to fish some Sweetflesh Oyster!" />
+                    <TeleportTo Name="The Ondo Cups" AetheryteId="147" Force="True" />
+                    <RunCode Name="EnableMount" />
+                    <NoCombatMoveTo Name="Movement Zone 1" XYZ="538.6176, 362.0053, -247.2706" />
+                    <NoCombatMoveTo Name="Movement Zone 2" XYZ="477.7508, 345.908, -270.1841" />
+                    <NoCombatMoveTo Name="Movement Zone 3" XYZ="484.743, 323.0126, -299.9759" />
+                    <NoCombatMoveTo Name="Movement Zone 4" XYZ="389.4394, 312.9135, -273.9686" />
+                    <NoCombatMoveTo Name="Movement Zone 5" XYZ="316.8263, 277.7139, -307.4475" />
+                    <WaitTimer WaitTime="2" />
+                    <RunCode Name="Dismount" />
+                    <RunCode Name="DisableMount" />
+                    <ExFish Condition="ItemCount(27513) &lt; (&DividedAmount;*2)" Collect="True" FishEyes="False" Snagging="True" CordialType="Auto" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True" EnableKeeper="True" Bait="Short Bill Minnow" Mount="False">
+                        <Keepers>
+                            <Keeper Name="Predator"/>
+                            <Keeper Name="Sweetflesh Oyster"/>
+                        </Keepers>
+                        <FishSpots>
+                            <FishSpot XYZ="377.0307, 231.6881, -336.7995" Heading="1.592814" Sit="True" />
+                            <FishSpot XYZ="331.8487, 232.721, -312.5647" Heading="2.374469" Sit="True" />
+                            <!--<FishSpot XYZ="344.8099, 294.4321, -310.1246" Heading="4.796778" Sit="True" /> -->
+                        </FishSpots>
+                    </ExFish>
+                    <RunCode Name="EnableMount" />
+                </While>
                 <If Condition="not(ItemCount(27513) &lt; (&DividedAmount;*2))">
                     <ExPurify>
                         <Item>Predator</Item>
@@ -237,22 +247,22 @@
                 <RunCode Name="Fisher" />
                 <RunCode Name="EnableMount" />
                 <ExEnablePlugins Names="Enable Flight"/>
-                    <Log Color="&LogTxt;" Message="Don't leave me unattended!" />
-                    <While Condition="HasAtLeast(27588,3) and ItemCount(27451) &lt; (&DividedAmount;)">
-                        <Log Color="&LogTxt;" Message="Going to fish some Rose Shrimp!" />
-                        <TeleportTo Name="Wright" AetheryteId="138" />
-                        <NoCombatMoveTo Name="Movement Zone 1" XYZ="-614.2444, 17.4005, 538.6078"  />
-                        <WaitTimer WaitTime="2" />
-                        <RunCode Name="Dismount" />
-                        <ExFish Condition="ItemCount(27451) &lt; (&DividedAmount;)" Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
-                            <FishSpots>
-                                <FishSpot XYZ="-786.8018, -0.5988511, 512.4433" Heading="4.844145" Sit="True" />
-                                <FishSpot XYZ="-671.9017, 0.7111499, 668.7593" Heading="2.715246" Sit="True" />
-                                <FishSpot XYZ="-667.0064, -0.5221032, 687.1022" Heading="1.599274" Sit="True" />
-                                <FishSpot XYZ="-596.753, 0.2128593, 567.9592" Heading="5.887372" Sit="True" />
-                            </FishSpots>
-                        </ExFish>
-                    </While>
+                <Log Color="&LogTxt;" Message="Don't leave me unattended!" />
+                <While Condition="HasAtLeast(27588,3) and ItemCount(27451) &lt; (&DividedAmount;)">
+                    <Log Color="&LogTxt;" Message="Going to fish some Rose Shrimp!" />
+                    <TeleportTo Name="Wright" AetheryteId="138" />
+                    <NoCombatMoveTo Name="Movement Zone 1" XYZ="-614.2444, 17.4005, 538.6078" />
+                    <WaitTimer WaitTime="2" />
+                    <RunCode Name="Dismount" />
+                    <ExFish Condition="ItemCount(27451) &lt; (&DividedAmount;)" Snagging="true" Mooch="0" Bait="Short Bill Minnow" MinFish="&MinFish;" MaxFish="&MaxFish;" ShuffleFishSpots="True">
+                        <FishSpots>
+                            <FishSpot XYZ="-786.8018, -0.5988511, 512.4433" Heading="4.844145" Sit="True" />
+                            <FishSpot XYZ="-671.9017, 0.7111499, 668.7593" Heading="2.715246" Sit="True" />
+                            <FishSpot XYZ="-658.5097, -0.6002932, 674.9579" Heading="2.149458" Sit="True" />
+                            <FishSpot XYZ="-596.753, 0.2128593, 567.9592" Heading="5.887372" Sit="True" />
+                        </FishSpots>
+                    </ExFish>
+                </While>
                 <If Condition="not(ItemCount(27451) &lt; (&DividedAmount;))">
                     <Log Color="&LogTxt;" Message="I think I'm done with Rose Shrimp!" />
                 </If>
@@ -262,7 +272,7 @@
             <Log Color="&LogTxt;" Message="I think I'm done gathering?" />
         </If>
         <If Condition="not(ItemCount(8) &lt; (&DividedAmount;*10) or ItemCount(13) &lt; (&DividedAmount;*7) or ItemCount(27820) &lt; (&DividedAmount;*5) or ItemCount(12878) &lt; (&DividedAmount;) or ItemCount(4843) &lt; (&DividedAmount;) or ItemCount(27451) &lt; (&DividedAmount;) or ItemCount(27825) &lt; (&DividedAmount;*2) or ItemCount(27513) &lt; (&DividedAmount;*2))">
-        <!-- Crafting -->
+            <!-- Crafting -->
             <TeleportTo Name="Eulmore" AetheryteId="134" Force="True" />
             <NoCombatMoveTo Name="Crafting Space" XYZ="-0.004471848, 82.08698, -19.56952" Heading="0.01287723" />
             <If Condition="&Craft; !=0">
